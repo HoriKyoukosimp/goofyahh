@@ -9,7 +9,7 @@ echo "5 second left..."
 sleep 5
 echo "LETSGOOOOOOOOOOOOOOOOOOOOOOOOOOOO"
 rm -r -d rvxtemp
-rm -r -d /sdcard/"revanced extended apks"/youtube_patched.apk
+rm -r -d /sdcard/"revanced extended apks"
 pkg update
 termux-setup-storage
 pkg i openjdk-17 -y
@@ -160,9 +160,7 @@ if [ "$patch" -eq 1 ]; then
 
    # Execute the modified command
    $command
-   mkdir /sdcard/"revanced extended apks"
-   mv  youtube_patched.apk /sdcard/"revanced extended apks"
-   termux-open /sdcard/"revanced extended apks"/youtube_patched.apk
+   mkdir /sdcard/"revanced extended apks" && mv  youtube_patched.apk /sdcard/"revanced extended apks" && termux-open /sdcard/"revanced extended apks"/youtube_patched.apk
    fi
    done
    
@@ -204,9 +202,7 @@ if [ "$patch" -eq 1 ]; then
        fi
    # Execute the modified command
    $command
-   mkdir /sdcard/"revanced extended apks"
-   mv  youtube_patched.apk /sdcard/"revanced extended apks"
-   termux-open /sdcard/"revanced extended apks"/youtube_patched.apk
+   mkdir /sdcard/"revanced extended apks" && mv  youtube_patched.apk /sdcard/"revanced extended apks" && termux-open /sdcard/"revanced extended apks"/youtube_patched.apk
    fi 
    done
    
@@ -248,9 +244,7 @@ if [ "$patch" -eq 1 ]; then
      fi
     # Execute the modified command
     $command
-    mkdir /sdcard/"revanced extended apks"
-    mv  youtube_patched.apk /sdcard/"revanced extended apks"
-    termux-open /sdcard/"revanced extended apks"/youtube_patched.apk
+    mkdir /sdcard/"revanced extended apks" && mv  youtube_patched.apk /sdcard/"revanced extended apks" && termux-open /sdcard/"revanced extended apks"/youtube_patched.apk
      else
      # If the user enters an invalid option, print an error message and exit the script
      echo "Invalid option. Exiting script."
@@ -296,9 +290,7 @@ if [ "$patch" -eq 1 ]; then
      fi
     # Execute the modified command
     $command
-    mkdir /sdcard/"revanced extended apks"
-    mv  youtube_patched.apk /sdcard/"revanced extended apks"
-    termux-open /sdcard/"revanced extended apks"/youtube_patched.apk
+    mkdir /sdcard/"revanced extended apks" && mv  youtube_patched.apk /sdcard/"revanced extended apks" && termux-open /sdcard/"revanced extended apks"/youtube_patched.apk
      else
      # If the user enters an invalid option, print an error message and exit the script
      echo "Invalid option. Exiting script."
@@ -391,9 +383,7 @@ elif [ "$patch" -eq 2 ]; then
 
    # Execute the modified command
    $command
-   mkdir /sdcard/"revanced extended apks"
-   mv  youtube_music_patched.apk /sdcard/"revanced extended apks"
-   termux-open /sdcard/"revanced extended apks"/youtube_music_patched.apk
+   mkdir /sdcard/"revanced extended apks" && mv  youtube_patched.apk /sdcard/"revanced extended apks" && termux-open /sdcard/"revanced extended apks"/youtube_music_patched.apk
    fi
  done
 else
