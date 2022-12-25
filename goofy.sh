@@ -353,7 +353,6 @@ else
   echo "Invalid input. Exiting the script..."
   exit 1
   fi
-done
 cd || exit
 rm -r -d rvxtemp
 clear
