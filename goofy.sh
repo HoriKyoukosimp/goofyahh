@@ -285,7 +285,7 @@ elif [ "$patch" -eq 2 ]; then
  }
 
  # Get the latest version of YouTube
- get_latestytversion
+ get_latestytmversion
 
  # Check if the latest YouTube version was retrieved successfully
  if [ -z "$YTVERSION" ]; then
