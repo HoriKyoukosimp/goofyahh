@@ -284,24 +284,6 @@ elif [ "$patch" -eq 2 ]; then
      req "$url" "$2"
  }
 
- # Get the latest version of YouTube music
- get_latestytmversion
-
- # Check if the latest YouTube version was retrieved successfully
- if [ -z "$YTMVERSION" ]; then
-     echo "Error: Unable to retrieve latest YouTube music version"
-     exit 1
- fi
-
- # Download the latest version of YouTube
- dl_yt "$YTMVERSION" "YouTube_Music.apk"
-
- # Check if the YouTube app was downloaded successfully
- if [ ! -f "YouTube_Music.apk" ]; then
-     echo "Error: Unable to download YouTube music app"
-     exit 1
- fi
-
   echo un
   echo "Enter the new YouTube package name (have to be something like this: app.rvx.android.youtube or youtube.android.rvx (dont require youtube & android & rvx, it can be anything)): "
   read package_name
