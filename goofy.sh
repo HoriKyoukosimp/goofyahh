@@ -267,17 +267,18 @@ elif [ "$patch" -eq 2 ]; then
      wget -q -O "$2" --header="$WGET_HEADER" "$1"
  }
 
- get_latestytversion() {
+ get_latestytmversion() {
      url="https://www.apkmirror.com/apk/google-inc/youtube-music/"
-     YTVERSION=$(req "$url" - | grep "All version" -A200 | grep app_release | sed 's:.*/youtube-::g;s:-release/.*::g;s:-:.:g' | sort -r | head -1)
-     echo "Latest Youtube Version: $YTVERSION"
+     YTMVERSION=$(req "$url" - | grep "All version" -A200 | grep app_release | sed 's:.*/youtube-music-::g;s:-release/.*::g;s:-:.:g' | sort -r | head -1)
+     echo "Latest YoutubeMusic Version: $YTMVERSION"
  }
 
- dl_yt() {
+
+ dl_ytm() {
      rm -rf $2
-     echo "Downloading YouTube $1"
+     echo "Downloading YouTubeMusic $1"
      url="https://www.apkmirror.com/apk/google-inc/youtube/youtube-music-${1//./-}-release/"
-     url="$url$(req "$url" - | grep Variant -A50 | grep ">APK<" -A2 | grep android-apk-download | sed "s#.*-release/##g;s#/\#.*##g")"
+     url="$url$(req "$url" - | grep arm64 -A30 | grep youtube-music | head -1 | sed "s#.*-release/##g;s#/\".*##g")"
      url="https://www.apkmirror.com$(req "$url" - | tr '\n' ' ' | sed -n 's;.*href="\(.*key=[^"]*\)">.*;\1;p')"
      url="https://www.apkmirror.com$(req "$url" - | tr '\n' ' ' | sed -n 's;.*href="\(.*key=[^"]*\)">.*;\1;p')"
      req "$url" "$2"
@@ -288,7 +289,7 @@ elif [ "$patch" -eq 2 ]; then
 
  # Check if the latest YouTube version was retrieved successfully
  if [ -z "$YTVERSION" ]; then
-     echo "Error: Unable to retrieve latest YouTube version"
+     echo "Error: Unable to retrieve latest YouTube music version"
      exit 1
  fi
 
@@ -297,7 +298,7 @@ elif [ "$patch" -eq 2 ]; then
 
  # Check if the YouTube app was downloaded successfully
  if [ ! -f "YouTube.apk" ]; then
-     echo "Error: Unable to download YouTube app"
+     echo "Error: Unable to download YouTube music app"
      exit 1
  fi
 
