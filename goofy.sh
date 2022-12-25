@@ -286,12 +286,31 @@ elif [ "$patch" -eq 2 ]; then
  dl_ytm() {
     rm -rf $2
     echo "Downloading YouTubeMusic $1"
-    url="https://www.apkmirror.com/apk/google-inc/youtube/youtube-music-${1//./-}-release/"
+    url="https://www.apkmirror.com/apk/google-inc/youtube-music/youtube-music-${1//./-}-release/"
     url="$url$(req "$url" - | grep arm64 -A30 | grep youtube-music | head -1 | sed "s#.*-release/##g;s#/\".*##g")"
     url="https://www.apkmirror.com$(req "$url" - | tr '\n' ' ' | sed -n 's;.*href="\(.*key=[^"]*\)">.*;\1;p')"
     url="https://www.apkmirror.com$(req "$url" - | tr '\n' ' ' | sed -n 's;.*href="\(.*key=[^"]*\)">.*;\1;p')"
     req "$url" "$2"
  }
+
+  # Get the latest version of YouTube music
+ get_latestytmversion
+
+ # Check if the latest YouTube version was retrieved successfully
+ if [ -z "$YTMVERSION" ]; then
+     echo "Error: Unable to retrieve latest YouTube music version"
+     exit 1
+ fi
+
+ # Download the latest version of YouTube
+ dl_yt "$YTMVERSION" "YouTube_Music.apk"
+
+ # Check if the YouTube app was downloaded successfully
+ if [ ! -f "YouTube_Music.apk" ]; then
+     echo "Error: Unable to download YouTube music app"
+     exit 1
+ fi
+
 
    echo "Select an icon color:"
    echo "1 is red"
