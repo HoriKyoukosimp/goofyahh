@@ -56,7 +56,7 @@ echo "1 is youtube"
 echo '2 is youtube music'
 read patch
 while true; do
-if [ "$patch" -eq 1]; then
+if [ "$patch" -eq 1 ]; then
  # Prompt the user to enter the new values
  echo "Enter the new YouTube app name: "
  read app_name
@@ -260,7 +260,7 @@ if [ "$patch" -eq 1]; then
    fi
    done 
  fi
-elif [ "$patch" -eq 2]; then
+elif [ "$patch" -eq 2 ]; then
 
  #download youtube
  req() {
