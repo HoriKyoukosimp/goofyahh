@@ -268,20 +268,20 @@ elif [ "$patch" -eq 2 ]; then
  }
 
  get_latestytmversion() {
-     url="https://www.apkmirror.com/apk/google-inc/youtube-music/"
-     YTMVERSION=$(req "$url" - | grep "All version" -A200 | grep app_release | sed 's:.*/youtube-music-::g;s:-release/.*::g;s:-:.:g' | sort -r | head -1)
-     echo "Latest Youtube Music Version: $YTMVERSION"
+    url="https://www.apkmirror.com/apk/google-inc/youtube-music/"
+    YTMVERSION=$(req "$url" - | grep "All version" -A200 | grep app_release | sed 's:.*/youtube-music-::g;s:-release/.*::g;s:-:.:g' | sort -r | head -1)
+    echo "Latest YoutubeMusic Version: $YTMVERSION"
  }
 
 
  dl_ytm() {
-     rm -rf $2
-     echo "Downloading YouTubeMusic $1"
-     url="https://www.apkmirror.com/apk/google-inc/youtube/youtube-music-${1//./-}-release/"
-     url="$url$(req "$url" - | grep arm64 -A30 | grep youtube-music | head -1 | sed "s#.*-release/##g;s#/\".*##g")"
-     url="https://www.apkmirror.com$(req "$url" - | tr '\n' ' ' | sed -n 's;.*href="\(.*key=[^"]*\)">.*;\1;p')"
-     url="https://www.apkmirror.com$(req "$url" - | tr '\n' ' ' | sed -n 's;.*href="\(.*key=[^"]*\)">.*;\1;p')"
-     req "$url" "$2"
+    rm -rf $2
+    echo "Downloading YouTubeMusic $1"
+    url="https://www.apkmirror.com/apk/google-inc/youtube/youtube-music-${1//./-}-release/"
+    url="$url$(req "$url" - | grep arm64 -A30 | grep youtube-music | head -1 | sed "s#.*-release/##g;s#/\".*##g")"
+    url="https://www.apkmirror.com$(req "$url" - | tr '\n' ' ' | sed -n 's;.*href="\(.*key=[^"]*\)">.*;\1;p')"
+    url="https://www.apkmirror.com$(req "$url" - | tr '\n' ' ' | sed -n 's;.*href="\(.*key=[^"]*\)">.*;\1;p')"
+    req "$url" "$2"
  }
 
   echo un
