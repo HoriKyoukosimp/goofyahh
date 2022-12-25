@@ -262,6 +262,7 @@ if [ "$patch" -eq 1 ]; then
  fi
 elif [ "$patch" -eq 2 ]; then
 
+ WGET_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
  #download youtube
  req() {
      wget -q -O "$2" --header="$WGET_HEADER" "$1"
@@ -284,7 +285,7 @@ elif [ "$patch" -eq 2 ]; then
     req "$url" "$2"
  }
 
-  echo un
+  echo unable to change youtube music app name
   echo "Enter the new YouTube package name (have to be something like this: app.rvx.android.youtube or youtube.android.rvx (dont require youtube & android & rvx, it can be anything)): "
   read package_name
 
