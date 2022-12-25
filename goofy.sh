@@ -101,7 +101,7 @@ clear
  sed -i "s/YouTube_AppName.*/YouTube_AppName = \"$app_name\"/" options.toml
  sed -i "s/YouTube_PackageName.*/YouTube_PackageName = \"$package_name\"/" options.toml
  FILES_URL=$(curl https://api.github.com/repos/HoriKyoukosimp/goofyahh/releases/latest | jq -r ".assets[] | select(.name | startswith(\"youtube\") and endswith(\".apk\")) | .browser_download_url")
- curl -L $FILES_URL -o youtube.apk
+ curl -L $FILES_URL -o YouTube.apk
 
 clear
 
@@ -135,16 +135,16 @@ clear
        # If the icon is not blank, modify the command string based on the value of the icon variable
        if [ "$icon" == "1" ]; then
          # If the icon is "red", change custom-branding-any to "red"
-         command="java -jar revanced-cli.jar -a youtube.apk -c -b revanced-patches.jar --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2 --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -m inte.apk --experimental -o youtube_patched.apk -i custom-branding-name -i custom-branding-red"
+         command="java -jar revanced-cli.jar -a YouTube.apk -c -b revanced-patches.jar --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2 --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -m inte.apk --experimental -o youtube_patched.apk -i custom-branding-name -i custom-branding-red"
        elif [ "$icon" == "2" ]; then
          # If the icon is "blue", change custom-branding-any to "blue"
-         command="java -jar revanced-cli.jar -a youtube.apk -c -b revanced-patches.jar --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -m inte.apk --experimental -o youtube_patched.apk -i custom-branding-name -i custom-branding-blue --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2"
+         command="java -jar revanced-cli.jar -a YouTube.apk -c -b revanced-patches.jar --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -m inte.apk --experimental -o youtube_patched.apk -i custom-branding-name -i custom-branding-blue --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2"
        elif [ "$icon" == "3" ]; then
          # If the icon is "revancify", change custom-branding-any to "revancify"
-         command="java -jar revanced-cli.jar --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -a youtube.apk -c -b revanced-patches.jar -m inte.apk --experimental -o youtube_patched.apk -i custom-branding-name -i custom-branding-revancify --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2"
+         command="java -jar revanced-cli.jar --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -a YouTube.apk -c -b revanced-patches.jar -m inte.apk --experimental -o youtube_patched.apk -i custom-branding-name -i custom-branding-revancify --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2"
         elif [ "$icon" == "4" ]; then
          # If the icon is "revancify", change custom-branding-any to "revancify"
-         command="java -jar revanced-cli.jar -a youtube.apk -c -b revanced-patches.jar -m inte.apk --experimental --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -o youtube_patched.apk -i custom-branding-name -e custom-branding-revancify -e custom-branding-blue -e custom-branding-red --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2"
+         command="java -jar revanced-cli.jar -a YouTube.apk -c -b revanced-patches.jar -m inte.apk --experimental --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -o youtube_patched.apk -i custom-branding-name -e custom-branding-revancify -e custom-branding-blue -e custom-branding-red --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2"
        else
            # If the icon is something else, print an error message and set the icon variable to an empty string
            echo "Invalid icon color. Please try again."
@@ -177,16 +177,16 @@ clear
          # If the icon is "red
 
            # If the icon is "red", change custom-branding-any to "red"
-         command="java -jar revanced-cli.jar -a youtube.apk -c -b revanced-patches.jar -m inte.apk --experimental -o youtube_patched.apk -i custom-branding-name -i custom-branding-red --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2"
+         command="java -jar revanced-cli.jar -a YouTube.apk -c -b revanced-patches.jar -m inte.apk --experimental -o youtube_patched.apk -i custom-branding-name -i custom-branding-red --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2"
        elif [ "$icon" == "2" ]; then
          # If the icon is "blue", change custom-branding-any to "blue"
-         command="java -jar revanced-cli.jar -a youtube.apk -c -b revanced-patches.jar -m inte.apk --experimental -o youtube_patched.apk -i custom-branding-name -i custom-branding-blue --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2 --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore"
+         command="java -jar revanced-cli.jar -a YouTube.apk -c -b revanced-patches.jar -m inte.apk --experimental -o youtube_patched.apk -i custom-branding-name -i custom-branding-blue --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2 --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore"
        elif [ "$icon" == "3" ]; then
          # If the icon is "revancify", change custom-branding-any to "revancify"
-         command="java -jar revanced-cli.jar -a youtube.apk -c -b revanced-patches.jar -m inte.apk --experimental -o youtube_patched.apk -i custom-branding-name -i custom-branding-revancify --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2 --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore"
+         command="java -jar revanced-cli.jar -a YouTube.apk -c -b revanced-patches.jar -m inte.apk --experimental -o youtube_patched.apk -i custom-branding-name -i custom-branding-revancify --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2 --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore"
         elif [ "$icon" == "4" ]; then
          # If the icon is "revancify", change custom-branding-any to "revancify"
-         command="java -jar revanced-cli.jar -a youtube.apk -c -b revanced-patches.jar -m inte.apk --experimental --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -o youtube_patched.apk -i custom-branding-name -e custom-branding-revancify -e custom-branding-blue -e custom-branding-red --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2"
+         command="java -jar revanced-cli.jar -a YouTube.apk -c -b revanced-patches.jar -m inte.apk --experimental --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -o youtube_patched.apk -i custom-branding-name -e custom-branding-revancify -e custom-branding-blue -e custom-branding-red --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2"
        else
          # If the icon is something else, print an error message and set the icon variable to an empty string
          echo "Invalid icon color. Please try again."
@@ -217,16 +217,16 @@ clear
        # If the icon is not blank, modify the command string based on the value of the icon variable
        if [ "$icon" == "1" ]; then
          # If the icon is "red", change custom-branding-any to "red"
-         command="java -jar revanced-cli.jar -a youtube.apk -c -b revanced-patches.jar -m inte.apk --experimental -o youtube_patched.apk -i custom-branding-name -i custom-branding-red --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2 --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore"
+         command="java -jar revanced-cli.jar -a YouTube.apk -c -b revanced-patches.jar -m inte.apk --experimental -o youtube_patched.apk -i custom-branding-name -i custom-branding-red --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2 --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore"
        elif [ "$icon" == "2" ]; then
          # If the icon is "blue", change custom-branding-any to "blue"
-         command="java -jar revanced-cli.jar --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -a youtube.apk -c -b revanced-patches.jar -m inte.apk --experimental -o youtube_patched.apk -i custom-branding-name -i custom-branding-blue --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2"
+         command="java -jar revanced-cli.jar --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -a YouTube.apk -c -b revanced-patches.jar -m inte.apk --experimental -o youtube_patched.apk -i custom-branding-name -i custom-branding-blue --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2"
        elif [ "$icon" == "3" ]; then
          # If the icon is "revancify", change custom-branding-any to "revancify"
-         command="java -jar revanced-cli.jar -a youtube.apk -c -b revanced-patches.jar -m inte.apk --experimental --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -o youtube_patched.apk -i custom-branding-name -i custom-branding-revancify --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2"
+         command="java -jar revanced-cli.jar -a YouTube.apk -c -b revanced-patches.jar -m inte.apk --experimental --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -o youtube_patched.apk -i custom-branding-name -i custom-branding-revancify --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2"
        elif [ "$icon" == "4" ]; then
          # If the icon is "revancify", change custom-branding-any to "revancify"
-         command="java -jar revanced-cli.jar -a youtube.apk -c -b revanced-patches.jar -m inte.apk --experimental --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -o youtube_patched.apk -i custom-branding-name -e custom-branding-revancify -e custom-branding-blue -e custom-branding-red --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2"
+         command="java -jar revanced-cli.jar -a YouTube.apk -c -b revanced-patches.jar -m inte.apk --experimental --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -o youtube_patched.apk -i custom-branding-name -e custom-branding-revancify -e custom-branding-blue -e custom-branding-red --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2"
        else
          # If the icon is something else, print an error message and set the icon variable to an empty string
          echo "Invalid icon color. Please try again."
