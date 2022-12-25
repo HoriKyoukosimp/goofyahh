@@ -55,7 +55,7 @@ echo "select app you want to patch"
 echo "1 is youtube"
 echo '2 is youtube music'
 read patch
-while true; do
+
 if [ "$patch" -eq 1 ]; then
  # Prompt the user to enter the new values
  echo "Enter the new YouTube app name: "
@@ -163,7 +163,6 @@ if [ "$patch" -eq 1 ]; then
    mkdir /sdcard/"revanced extended apks"
    mv  youtube_patched.apk /sdcard/"revanced extended apks"
    termux-open /sdcard/"revanced extended apks"/youtube_patched.apk
-   break
    fi
    done
    
@@ -210,10 +209,8 @@ if [ "$patch" -eq 1 ]; then
     mkdir /sdcard/"revanced extended apks"
     mv  youtube_patched.apk /sdcard/"revanced extended apks"
     termux-open /sdcard/"revanced extended apks"/youtube_patched.apk
-    break
    fi 
    done
- break
   elif [ "$numbers" -eq 3 ]; then
    # Prompt the user to select an icon color
    echo "Select an icon color:"
@@ -255,7 +252,6 @@ if [ "$patch" -eq 1 ]; then
      mkdir /sdcard/"revanced extended apks"
      mv  youtube_patched.apk /sdcard/"revanced extended apks"
      termux-open /sdcard/"revanced extended apks"/youtube_patched.apk
-     break
      else
      # If the user enters an invalid option, print an error message and exit the script
      echo "Invalid option. Exiting script."
@@ -352,10 +348,10 @@ elif [ "$patch" -eq 2 ]; then
    mv  youtube_music_patched.apk /sdcard/"revanced extended apks"
    termux-open /sdcard/"revanced extended apks"/youtube_music_patched.apk
    fi
-   break
  done
 else
-  echo "Invalid input. Please try again."
+  echo "Invalid input. Exiting the script..."
+  exit 1
   fi
 done
 cd || exit
