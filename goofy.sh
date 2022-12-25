@@ -297,7 +297,7 @@ elif [ "$patch" -eq 2 ]; then
  dl_yt "$YTMVERSION" "YouTube.apk"
 
  # Check if the YouTube app was downloaded successfully
- if [ ! -f "YouTube_music.apk" ]; then
+ if [ ! -f "YouTube_Music.apk" ]; then
      echo "Error: Unable to download YouTube music app"
      exit 1
  fi
