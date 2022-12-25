@@ -270,7 +270,7 @@ elif [ "$patch" -eq 2 ]; then
  get_latestytmversion() {
      url="https://www.apkmirror.com/apk/google-inc/youtube-music/"
      YTMVERSION=$(req "$url" - | grep "All version" -A200 | grep app_release | sed 's:.*/youtube-music-::g;s:-release/.*::g;s:-:.:g' | sort -r | head -1)
-     echo "Latest YoutubeMusic Version: $YTMVERSION"
+     echo "Latest Youtube Music Version: $YTMVERSION"
  }
 
 
@@ -284,20 +284,20 @@ elif [ "$patch" -eq 2 ]; then
      req "$url" "$2"
  }
 
- # Get the latest version of YouTube
+ # Get the latest version of YouTube music
  get_latestytmversion
 
  # Check if the latest YouTube version was retrieved successfully
- if [ -z "$YTVERSION" ]; then
+ if [ -z "$YTMVERSION" ]; then
      echo "Error: Unable to retrieve latest YouTube music version"
      exit 1
  fi
 
  # Download the latest version of YouTube
- dl_yt "$YTVERSION" "YouTube.apk"
+ dl_yt "$YTMVERSION" "YouTube.apk"
 
  # Check if the YouTube app was downloaded successfully
- if [ ! -f "YouTube.apk" ]; then
+ if [ ! -f "YouTube_music.apk" ]; then
      echo "Error: Unable to download YouTube music app"
      exit 1
  fi
