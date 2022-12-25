@@ -74,7 +74,7 @@ FILE_URL3=$(curl https://api.github.com/repos/$ORG/$REPO3/releases/latest | jq -
 curl -L $FILE_URL3 -o inte.apk
 curl -L $FILE_URL2 -o revanced-cli.jar
 curl -L $FILE_URL1 -o revanced-patches.jar
-curl -OL https://github.com/HoriKyoukosimp/goofyahh/releases/download/0.0.1/aapt2
+curl -OL https://github.com/HoriKyoukosimp/goofyahh/releases/download/aapt2/aapt2
 wget https://raw.githubusercontent.com/decipher3114/Revancify/main/revanced.keystore -P /data/data/com.termux/files/home/.keystore -nc
 
 # create options.toml
