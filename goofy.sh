@@ -203,6 +203,10 @@ if [ "$patch" -eq 1 ]; then
    # Execute the modified command
    $command
    mkdir /sdcard/"revanced extended apks" && mv  youtube_patched.apk /sdcard/"revanced extended apks" && termux-open /sdcard/"revanced extended apks"/youtube_patched.apk
+    else
+     # If the user enters an invalid option, print an error message and exit the script
+     echo "Invalid option. Exiting script."
+     exit 1
    fi 
    done
    
@@ -395,3 +399,4 @@ rm -r -d rvxtemp
 clear
 
 echo "thanks for using my script! hope you have fun with revanced extended!"
+echo "if for whatever reason the package installer didnt pop up, u can go to your file manager app, u will see folder named "revanced extended apks" install the apk from there"
