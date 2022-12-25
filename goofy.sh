@@ -302,8 +302,8 @@ elif [ "$patch" -eq 2 ]; then
      exit 1
  fi
 
- # Download the latest version of YouTube
- dl_yt "$YTMVERSION" "YouTube_Music.apk"
+ # Download the latest version of YouTube music
+  dl_ytm "$YTMVERSION" "YouTube_Music.apk"
 
  # Check if the YouTube app was downloaded successfully
  if [ ! -f "YouTube_Music.apk" ]; then
