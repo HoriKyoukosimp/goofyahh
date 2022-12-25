@@ -262,8 +262,16 @@ if [ "$patch" -eq 1 ]; then
  fi
 elif [ "$patch" -eq 2 ]; then
 
+  echo unable to change youtube music app name
+  echo "Enter the new YouTube package name (have to be something like this: app.rvx.android.youtube or youtube.android.rvx (dont require youtube & android & rvx, it can be anything)): "
+  read package_name
+
+  clear
+
+  # Use sed to update the options.json file
+  sed -i "s/Music_PackageName.*/Music_PackageName = \"$package_name\"/" options.toml
+  #download youtube music
  WGET_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
- #download youtube
  req() {
      wget -q -O "$2" --header="$WGET_HEADER" "$1"
  }
@@ -285,20 +293,10 @@ elif [ "$patch" -eq 2 ]; then
     req "$url" "$2"
  }
 
-  echo unable to change youtube music app name
-  echo "Enter the new YouTube package name (have to be something like this: app.rvx.android.youtube or youtube.android.rvx (dont require youtube & android & rvx, it can be anything)): "
-  read package_name
-
-  clear
-
-  # Use sed to update the options.json file
-  sed -i "s/Music_PackageName.*/Music_PackageName = \"$package_name\"/" options.toml
-
    echo "Select an icon color:"
    echo "1 is red"
-   echo "2 is blue"
-   echo "3 is revancify"
-   echo "4 is YouTube Original Icon"
+   echo "2 is revancify"
+   echo "3 is YouTube Original Icon"
 
    # Initialize the icon variable to an empty string
    icon=""
@@ -314,10 +312,10 @@ elif [ "$patch" -eq 2 ]; then
        if [ "$icon" == "1" ]; then
          # If the icon is "red", change custom-branding-any to "red"
          command="java -jar revanced-cli.jar -a YouTube_Music.apk -c -b revanced-patches.jar --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2 --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -m inte.apk --experimental -o youtube_music_patched.apk -i custom-branding-name -i custom-branding-icon-red"
-       elif [ "$icon" == "3" ]; then
+       elif [ "$icon" == "2" ]; then
          # If the icon is "revancify", change custom-branding-any to "revancify"
          command="java -jar revanced-cli.jar --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -a YouTube_Music.apk -c -b revanced-patches.jar -m inte.apk --experimental -o youtube_music_patched.apk -i custom-branding-name -i custom-branding-icon-revancify --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2"
-        elif [ "$icon" == "4" ]; then
+        elif [ "$icon" == "3" ]; then
          # If the icon is "revancify", change custom-branding-any to "og"
          command="java -jar revanced-cli.jar -a YouTube_Music.apk -c -b revanced-patches.jar -m inte.apk --experimental --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -o youtube_music_patched.apk -i custom-branding-name -e custom-branding-icon-revancify -e custom-branding-icon-blue -e custom-branding-icon-red --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2"
        else
