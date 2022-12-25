@@ -9,6 +9,7 @@ echo "5 second left..."
 sleep 5
 echo "LETSGOOOOOOOOOOOOOOOOOOOOOOOOOOOO"
 rm -r -d rvxtemp
+rm -r -d /sdcard/"revanced extended apks"/youtube_patched.apk
 pkg update
 termux-setup-storage
 pkg i openjdk-17 -y
