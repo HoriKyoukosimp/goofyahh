@@ -150,10 +150,12 @@ clear
            echo "Invalid icon color. Please try again."
            icon=""
      fi
-   done
 
    # Execute the modified command
    $command
+   fi
+   done
+   
   elif [ "$numbers" -eq 2 ]; then
    # Prompt the user to select an icon color
    echo "Select an icon color:"
@@ -191,11 +193,12 @@ clear
          # If the icon is something else, print an error message and set the icon variable to an empty string
          echo "Invalid icon color. Please try again."
          icon=""
-     fi
-   done
-
+       fi
    # Execute the modified command
    $command
+   fi 
+   done
+
   elif [ "$numbers" -eq 3 ]; then
    # Prompt the user to select an icon color
    echo "Select an icon color:"
@@ -232,32 +235,20 @@ clear
          echo "Invalid icon color. Please try again."
          icon=""
      fi
-   done
-
-   # Execute the modified command
-   $command
-   else
-   # If the user enters an invalid option, print an error message and exit the script
-   echo "Invalid option. Exiting script."
-   exit 1
-  fi
+     # Execute the modified command
+     $command
+     else
+     # If the user enters an invalid option, print an error message and exit the script
+     echo "Invalid option. Exiting script."
+     exit 1
+   fi
+   done 
+ fi
 mkdir /sdcard/"revanced extended apks"
 mv  youtube_patched.apk /sdcard/"revanced extended apks"
 termux-open /sdcard/"revanced extended apks"/youtube_patched.apk
-cd
+cd || exit
 rm -r -d rvxtemp
 clear
 
 echo "thanks for using my script! hope you have fun with revanced extended!"
-
-
-
-
-
-
-
-
-
-
-
-
