@@ -349,7 +349,7 @@ elif [ "$patch" -eq 2 ]; then
    mv  youtube_music_patched.apk /sdcard/"revanced extended apks"
    termux-open /sdcard/"revanced extended apks"/youtube_music_patched.apk
    fi
-   done
+done
 else
   echo "Invalid input. Please try again."
   fi
