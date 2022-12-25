@@ -211,6 +211,7 @@ if [ "$patch" -eq 1 ]; then
     termux-open /sdcard/"revanced extended apks"/youtube_patched.apk
    fi 
    done
+   
   elif [ "$numbers" -eq 3 ]; then
    # Prompt the user to select an icon color
    echo "Select an icon color:"
@@ -242,6 +243,54 @@ if [ "$patch" -eq 1 ]; then
        elif [ "$icon" == "4" ]; then
          # If the icon is "revancify", change custom-branding-any to "og"
          command="java -jar revanced-cli.jar -a YouTube.apk -c -b revanced-patches.jar -m inte.apk --experimental --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -o youtube_patched.apk -i custom-branding-name -e custom-branding-icon-revancify -e custom-branding-icon-blue -e custom-branding-icon-red --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2"
+       else
+         # If the icon is something else, print an error message and set the icon variable to an empty string
+         echo "Invalid icon color. Please try again."
+         icon=""
+     fi
+    # Execute the modified command
+    $command
+     mkdir /sdcard/"revanced extended apks"
+     mv  youtube_patched.apk /sdcard/"revanced extended apks"
+     termux-open /sdcard/"revanced extended apks"/youtube_patched.apk
+     else
+     # If the user enters an invalid option, print an error message and exit the script
+     echo "Invalid option. Exiting script."
+     exit 1
+   fi
+   done 
+
+   elif [ "$numbers" -eq 4 ]; then
+   # Prompt the user to select an icon color
+   echo "Select an icon color:"
+   echo "1 is red"
+   echo "2 is blue"
+   echo "3 is revancify"
+   echo "4 is YouTube Original Icon"
+
+   # Initialize the icon variable to an empty string
+   icon=""
+
+   # Start a while loop to prompt the user for input
+   while [ -z "$icon" ] || [ "$icon" != "1" ] && [ "$icon" != "2" ] && [ "$icon" != "3" ]; do
+     # Read the value of the icon variable
+     read icon
+
+     # Modify the command string based on the value of the icon variable
+     if [ -n "$icon" ]; then
+       # If the icon is not blank, modify the command string based on the value of the icon variable
+       if [ "$icon" == "1" ]; then
+         # If the icon is "red", change custom-branding-any to "red"
+         command="java -jar revanced-cli.jar -a YouTube.apk -c -b revanced-patches.jar -m inte.apk --experimental -o youtube_patched.apk -i theme -i materialyou -i custom-branding-name -i custom-branding-icon-red --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2 --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore"
+       elif [ "$icon" == "2" ]; then
+         # If the icon is "blue", change custom-branding-any to "blue"
+         command="java -jar revanced-cli.jar --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -a YouTube.apk -c -b revanced-patches.jar -i theme -i materialyou -m inte.apk --experimental -o youtube_patched.apk -i custom-branding-name -i custom-branding-icon-blue --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2"
+       elif [ "$icon" == "3" ]; then
+         # If the icon is "revancify", change custom-branding-any to "revancify"
+         command="java -jar revanced-cli.jar -a YouTube.apk -c -b revanced-patches.jar -m inte.apk --experimental --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -i theme -i materialyou -o youtube_patched.apk -i custom-branding-name -i custom-branding-icon-revancify --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2"
+       elif [ "$icon" == "4" ]; then
+         # If the icon is "revancify", change custom-branding-any to "og"
+         command="java -jar revanced-cli.jar -a YouTube.apk -c -b revanced-patches.jar -m inte.apk --experimental --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -i theme -i materialyou -o youtube_patched.apk -i custom-branding-name -e custom-branding-icon-revancify -e custom-branding-icon-blue -e custom-branding-icon-red --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2"
        else
          # If the icon is something else, print an error message and set the icon variable to an empty string
          echo "Invalid icon color. Please try again."
