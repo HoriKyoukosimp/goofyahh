@@ -349,7 +349,10 @@ elif [ "$patch" -eq 2]; then
    termux-open /sdcard/"revanced extended apks"/youtube_music_patched.apk
    fi
    done
-
+else
+  echo "Invalid input. Please try again."
+  fi
+done
 cd || exit
 rm -r -d rvxtemp
 clear
