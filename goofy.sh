@@ -120,7 +120,7 @@ clear
    echo "1 is red"
    echo "2 is blue"
    echo "3 is revancify"
-   echo "Leave it blank for the original icon"
+   echo "4 is YouTube Original Icon"
 
    # Initialize the icon variable to an empty string
    icon=""
@@ -142,15 +142,13 @@ clear
        elif [ "$icon" == "3" ]; then
          # If the icon is "revancify", change custom-branding-any to "revancify"
          command="java -jar revanced-cli.jar --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -a youtube.apk -c -b revanced-patches.jar -m inte.apk --experimental -o youtube_patched.apk -i custom-branding-name -i custom-branding-revancify --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2"
+        elif [ "$icon" == "4" ]; then
+         # If the icon is "revancify", change custom-branding-any to "revancify"
+         command="java -jar revanced-cli.jar -a youtube.apk -c -b revanced-patches.jar -m inte.apk --experimental --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -o youtube_patched.apk -i custom-branding-name -e custom-branding-revancify -e custom-branding-blue -e custom-branding-red --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2"
        else
            # If the icon is something else, print an error message and set the icon variable to an empty string
            echo "Invalid icon color. Please try again."
            icon=""
-         fi
-       else
-         icon=""
-       # If the icon is blank, remove the custom-branding-any argument from the command string
-       command=$(echo "java -jar revanced-cli.jar -a youtube.apk -e theme -c -b revanced-patches.jar -m inte.apk --experimental --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -o youtube_patched.apk -i custom-branding-name --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2" | sed 's/-i custom-branding-any//')
      fi
    done
 
@@ -162,7 +160,7 @@ clear
    echo "1 is red"
    echo "2 is blue"
    echo "3 is revancify"
-   echo "Leave it blank for the original icon"
+   echo "4 is YouTube Original Icon"
 
    # Initialize the icon variable to an empty string
    icon=""
@@ -186,14 +184,13 @@ clear
        elif [ "$icon" == "3" ]; then
          # If the icon is "revancify", change custom-branding-any to "revancify"
          command="java -jar revanced-cli.jar -a youtube.apk -c -b revanced-patches.jar -m inte.apk --experimental -o youtube_patched.apk -i custom-branding-name -i custom-branding-revancify --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2 --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore"
+        elif [ "$icon" == "4" ]; then
+         # If the icon is "revancify", change custom-branding-any to "revancify"
+         command="java -jar revanced-cli.jar -a youtube.apk -c -b revanced-patches.jar -m inte.apk --experimental --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -o youtube_patched.apk -i custom-branding-name -e custom-branding-revancify -e custom-branding-blue -e custom-branding-red --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2"
        else
          # If the icon is something else, print an error message and set the icon variable to an empty string
          echo "Invalid icon color. Please try again."
          icon=""
-       fi
-     else
-       # If the icon is blank, remove the custom-branding-any argument from the command string
-       command=$(echo "java -jar revanced-cli.jar -a youtube.apk -c -e theme -b revanced-patches.jar -m inte.apk --experimental -o youtube_patched.apk -i custom-branding-name --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2 --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore" | sed 's/-i custom-branding-any//')
      fi
    done
 
@@ -205,7 +202,7 @@ clear
    echo "1 is red"
    echo "2 is blue"
    echo "3 is revancify"
-   echo "Leave it blank for the original icon"
+   echo "4 is YouTube Original Icon"
 
    # Initialize the icon variable to an empty string
    icon=""
@@ -227,14 +224,13 @@ clear
        elif [ "$icon" == "3" ]; then
          # If the icon is "revancify", change custom-branding-any to "revancify"
          command="java -jar revanced-cli.jar -a youtube.apk -c -b revanced-patches.jar -m inte.apk --experimental --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -o youtube_patched.apk -i custom-branding-name -i custom-branding-revancify --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2"
+       elif [ "$icon" == "4" ]; then
+         # If the icon is "revancify", change custom-branding-any to "revancify"
+         command="java -jar revanced-cli.jar -a youtube.apk -c -b revanced-patches.jar -m inte.apk --experimental --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -o youtube_patched.apk -i custom-branding-name -e custom-branding-revancify -e custom-branding-blue -e custom-branding-red --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2"
        else
          # If the icon is something else, print an error message and set the icon variable to an empty string
          echo "Invalid icon color. Please try again."
          icon=""
-       fi
-     else
-       # If the icon is blank, remove the custom-branding-any argument from the command string
-       command=$(echo "java -jar revanced-cli.jar -a youtube.apk -c -e theme -b revanced-patches.jar -m inte.apk --experimental -o youtube_patched.apk -i custom-branding-name --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2" | sed 's/-i custom-branding-any//')
      fi
    done
 
