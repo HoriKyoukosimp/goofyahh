@@ -21,6 +21,7 @@ cd rvxtemp
 
 
 
+clear
 
 # Set the repository owner, name, and the file name
 ORG=inotia00
@@ -52,6 +53,7 @@ echo 'Overlay_Buttons_Icon = "new"' >> options.toml
 echo 'darkThemeBackgroundColor = "@android:color/black"' >> options.toml
 
 clear
+
 echo "select app you want to patch"
 echo "1 is youtube"
 echo '2 is youtube music'
