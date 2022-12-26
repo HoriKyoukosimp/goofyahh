@@ -370,12 +370,11 @@ elif [ "$patch" -eq 2 ]; then
      exit 1
  fi
 
-
+   clear
    echo "Select an icon color:"
    echo "1 is red"
    echo "2 is revancify"
    echo "3 is YouTube Original Icon"
-   clear
    # Initialize the icon variable to an empty string
    icon=""
 
