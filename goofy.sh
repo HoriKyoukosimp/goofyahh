@@ -1,5 +1,5 @@
 echo "welcome to auto build scripts made by @zutto_mayonaka_de_linoni on telegram"
-echo "well this script isnt that good compared to revanced manager, rvx builder or revancify"
+echo "well this script isnt that good compared to revanced manager, revanced builder or revancify"
 echo "this script is recommend for someone having issue using those builder"
 echo "so have fun!"
 echo "also subscribe to zutomayo on youtube or this script will kill itself (joking haha)"
@@ -19,8 +19,8 @@ mkdir rvxtemp
 mkdir .keystore
 cd rvxtemp
 
-# Get the latest version of YouTube
-get_latestytversion
+
+
 
 # Set the repository owner, name, and the file name
 ORG=inotia00
@@ -33,12 +33,13 @@ FILE_URL1=$(curl https://api.github.com/repos/$ORG/$REPO1/releases/latest | jq -
 FILE_URL2=$(curl https://api.github.com/repos/$ORG/$REPO2/releases/latest | jq -r ".assets[] | select(.name | startswith(\"revanced-cli-\") and endswith(\".jar\")) | .browser_download_url")
 FILE_URL3=$(curl https://api.github.com/repos/$ORG/$REPO3/releases/latest | jq -r ".assets[] | select(.name | startswith(\"app-\") and endswith(\".apk\")) | .browser_download_url")
 
+echo "downloading required files for patching (around 60mb), it will automatically removed after finished patching"
 # Download the files
-curl -L $FILE_URL3 -o inte.apk
-curl -L $FILE_URL2 -o revanced-cli.jar
-curl -L $FILE_URL1 -o revanced-patches.jar
-curl -OL https://github.com/HoriKyoukosimp/goofyahh/releases/download/aapt2/aapt2
-wget https://raw.githubusercontent.com/decipher3114/Revancify/main/revanced.keystore -P /data/data/com.termux/files/home/.keystore -nc
+curl -L $FILE_URL3 -o inte.apk -s
+curl -L $FILE_URL2 -o revanced-cli.jar -s
+curl -L $FILE_URL1 -o revanced-patches.jar -s
+curl -OL https://github.com/HoriKyoukosimp/goofyahh/releases/download/aapt2/aapt2 -s
+wget https://raw.githubusercontent.com/decipher3114/Revancify/main/revanced.keystore -P /data/data/com.termux/files/home/.keystore -nc -q
 
 # create options.toml
 touch options.toml
@@ -55,6 +56,8 @@ echo "select app you want to patch"
 echo "1 is youtube"
 echo '2 is youtube music'
 read patch
+
+cLear 
 
 if [ "$patch" -eq 1 ]; then
  # Prompt the user to enter the new values
@@ -85,6 +88,8 @@ if [ "$patch" -eq 1 ]; then
  dl_yt() {
      rm -rf $2
      echo "Downloading YouTube $1"
+     echo "dont worry, the script is downloading youtube"
+     echo "i just dont know how to make req show progress"
      url="https://www.apkmirror.com/apk/google-inc/youtube/youtube-${1//./-}-release/"
      url="$url$(req "$url" - | grep Variant -A50 | grep ">APK<" -A2 | grep android-apk-download | sed "s#.*-release/##g;s#/\#.*##g")"
      url="https://www.apkmirror.com$(req "$url" - | tr '\n' ' ' | sed -n 's;.*href="\(.*key=[^"]*\)">.*;\1;p')"
@@ -128,6 +133,8 @@ if [ "$patch" -eq 1 ]; then
    echo "2 is blue"
    echo "3 is revancify"
    echo "4 is YouTube Original Icon"
+   
+   clear
 
    # Initialize the icon variable to an empty string
    icon=""
@@ -171,6 +178,8 @@ if [ "$patch" -eq 1 ]; then
    echo "2 is blue"
    echo "3 is revancify"
    echo "4 is YouTube Original Icon"
+
+  clear
 
    # Initialize the icon variable to an empty string
    icon=""
@@ -218,6 +227,8 @@ if [ "$patch" -eq 1 ]; then
    echo "3 is revancify"
    echo "4 is YouTube Original Icon"
 
+  clear
+
    # Initialize the icon variable to an empty string
    icon=""
 
@@ -263,6 +274,8 @@ if [ "$patch" -eq 1 ]; then
    echo "2 is blue"
    echo "3 is revancify"
    echo "4 is YouTube Original Icon"
+
+   clear
 
    # Initialize the icon variable to an empty string
    icon=""
@@ -327,7 +340,9 @@ elif [ "$patch" -eq 2 ]; then
 
  dl_ytm() {
     rm -rf $2
-    echo "Downloading YouTubeMusic $1"
+    echo "Downloading YouTube Music $1"
+    echo "dont worry, tHe script is still running"
+    echo "i just dont knoe how to make req show progress"
     url="https://www.apkmirror.com/apk/google-inc/youtube-music/youtube-music-${1//./-}-release/"
     url="$url$(req "$url" - | grep arm64 -A30 | grep youtube-music | head -1 | sed "s#.*-release/##g;s#/\".*##g")"
     url="https://www.apkmirror.com$(req "$url" - | tr '\n' ' ' | sed -n 's;.*href="\(.*key=[^"]*\)">.*;\1;p')"
@@ -358,7 +373,7 @@ elif [ "$patch" -eq 2 ]; then
    echo "1 is red"
    echo "2 is revancify"
    echo "3 is YouTube Original Icon"
-
+   clear
    # Initialize the icon variable to an empty string
    icon=""
 
