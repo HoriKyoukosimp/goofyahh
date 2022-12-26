@@ -344,7 +344,7 @@ elif [ "$patch" -eq 2 ]; then
     rm -rf $2
     echo "Downloading YouTube Music $1"
     echo "dont worry, tHe script is still running"
-    echo "i just dont knoe how to make req show progress"
+    echo "i just dont know how to make req show progress"
     url="https://www.apkmirror.com/apk/google-inc/youtube-music/youtube-music-${1//./-}-release/"
     url="$url$(req "$url" - | grep arm64 -A30 | grep youtube-music | head -1 | sed "s#.*-release/##g;s#/\".*##g")"
     url="https://www.apkmirror.com$(req "$url" - | tr '\n' ' ' | sed -n 's;.*href="\(.*key=[^"]*\)">.*;\1;p')"
