@@ -133,22 +133,22 @@ wget https://raw.githubusercontent.com/decipher3114/Revancify/main/revanced.keys
      clear
      
       # Get the latest version of YouTube
- get_latestytversion
+      get_latestytversion
 
  # Check if the latest YouTube version was retrieved successfully
-    if [ -z "$YTVERSION" ]; then
-        echo "Error: Unable to retrieve latest YouTube version"
-        exit 1
-    fi
+     if [ -z "$YTVERSION" ]; then
+         echo "Error: Unable to retrieve latest YouTube version"
+         exit 1
+     fi
 
-    # Download the latest version of YouTube
-    dl_yt "$YTVERSION" "YouTube.apk"
+     # Download the latest version of YouTube
+     dl_yt "$YTVERSION" "YouTube.apk"
  
-    # Check if the YouTube app was downloaded successfully
-    if [ ! -f "YouTube.apk" ]; then
-        echo "Error: Unable to download YouTube app"
-        exit 1
-      fi
+     # Check if the YouTube app was downloaded successfully
+     if [ ! -f "YouTube.apk" ]; then
+         echo "Error: Unable to download YouTube app"
+         exit 1
+       fi
       
      # Modify the command string based on the value of the icon variable
      if [ -n "$icon" ]; then
@@ -200,22 +200,22 @@ wget https://raw.githubusercontent.com/decipher3114/Revancify/main/revanced.keys
      clear
      
       # Get the latest version of YouTube
- get_latestytversion
+      get_latestytversion
 
  # Check if the latest YouTube version was retrieved successfully
-    if [ -z "$YTVERSION" ]; then
-        echo "Error: Unable to retrieve latest YouTube version"
-        exit 1
-    fi
+     if [ -z "$YTVERSION" ]; then
+         echo "Error: Unable to retrieve latest YouTube version"
+         exit 1
+     fi
 
-    # Download the latest version of YouTube
-    dl_yt "$YTVERSION" "YouTube.apk"
+     # Download the latest version of YouTube
+     dl_yt "$YTVERSION" "YouTube.apk"
  
-    # Check if the YouTube app was downloaded successfully
-    if [ ! -f "YouTube.apk" ]; then
-        echo "Error: Unable to download YouTube app"
-        exit 1
-      fi
+     # Check if the YouTube app was downloaded successfully
+     if [ ! -f "YouTube.apk" ]; then
+         echo "Error: Unable to download YouTube app"
+         exit 1
+       fi
       
   clear
   
@@ -273,23 +273,23 @@ wget https://raw.githubusercontent.com/decipher3114/Revancify/main/revanced.keys
      clear
      
       # Get the latest version of YouTube
- get_latestytversion
+      get_latestytversion
 
  # Check if the latest YouTube version was retrieved successfully
-    if [ -z "$YTVERSION" ]; then
-        echo "Error: Unable to retrieve latest YouTube version"
-        exit 1
-    fi
+     if [ -z "$YTVERSION" ]; then
+         echo "Error: Unable to retrieve latest YouTube version"
+         exit 1
+     fi
 
-    # Download the latest version of YouTube
-    dl_yt "$YTVERSION" "YouTube.apk"
+     # Download the latest version of YouTube
+     dl_yt "$YTVERSION" "YouTube.apk"
  
-    # Check if the YouTube app was downloaded successfully
-    if [ ! -f "YouTube.apk" ]; then
-        echo "Error: Unable to download YouTube app"
-        exit 1
-      fi
-  
+     # Check if the YouTube app was downloaded successfully
+     if [ ! -f "YouTube.apk" ]; then
+         echo "Error: Unable to download YouTube app"
+         exit 1
+       fi
+      
   clear
   
      # Modify the command string based on the value of the icon variable
@@ -345,23 +345,23 @@ wget https://raw.githubusercontent.com/decipher3114/Revancify/main/revanced.keys
      clear
      
       # Get the latest version of YouTube
- get_latestytversion
+      get_latestytversion
 
  # Check if the latest YouTube version was retrieved successfully
-    if [ -z "$YTVERSION" ]; then
-        echo "Error: Unable to retrieve latest YouTube version"
-        exit 1
-    fi
+     if [ -z "$YTVERSION" ]; then
+         echo "Error: Unable to retrieve latest YouTube version"
+         exit 1
+     fi
 
-    # Download the latest version of YouTube
-    dl_yt "$YTVERSION" "YouTube.apk"
+     # Download the latest version of YouTube
+     dl_yt "$YTVERSION" "YouTube.apk"
  
-    # Check if the YouTube app was downloaded successfully
-    if [ ! -f "YouTube.apk" ]; then
-        echo "Error: Unable to download YouTube app"
-        exit 1
-      fi
-
+     # Check if the YouTube app was downloaded successfully
+     if [ ! -f "YouTube.apk" ]; then
+         echo "Error: Unable to download YouTube app"
+         exit 1
+       fi
+      
 clear
 
      # Modify the command string based on the value of the icon variable
@@ -448,22 +448,22 @@ elif [ "$patch" -eq 2 ]; then
      read icon
   # Get the latest version of YouTube music
   
-    get_latestytmversion
+     get_latestytmversion
  
-    # Check if the latest YouTube version was retrieved successfully
-    if [ -z "$YTMVERSION" ]; then
-        echo "Error: Unable to retrieve latest YouTube music version"
-        exit 1
-    fi
+     # Check if the latest YouTube version was retrieved successfully
+     if [ -z "$YTMVERSION" ]; then
+         echo "Error: Unable to retrieve latest YouTube music version"
+         exit 1
+     fi
 
-    # Download the latest version of YouTube music
-     dl_ytm "$YTMVERSION" "YouTube_Music.apk"
-
-    # Check if the YouTube app was downloaded successfully
-    if [ ! -f "YouTube_Music.apk" ]; then
-        echo "Error: Unable to download YouTube music app"
-        exit 1
-    fi
+     # Download the latest version of YouTube music
+      dl_ytm "$YTMVERSION" "YouTube_Music.apk"
+ 
+     # Check if the YouTube app was downloaded successfully
+     if [ ! -f "YouTube_Music.apk" ]; then
+         echo "Error: Unable to download YouTube music app"
+         exit 1
+     fi
 
      # Modify the command string based on the value of the icon variable
      if [ -n "$icon" ]; then
