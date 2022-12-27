@@ -19,28 +19,7 @@ mkdir rvxtemp
 mkdir .keystore
 cd rvxtemp
 
-
-
 clear
-
-# Set the repository owner, name, and the file name
-ORG=inotia00
-REPO1=revanced-patches
-REPO2=revanced-cli
-REPO3=revanced-integrations
-
-# Get the URL of the file from the latest release
-FILE_URL1=$(curl https://api.github.com/repos/$ORG/$REPO1/releases/latest | jq -r ".assets[] | select(.name | startswith(\"revanced-patches-\") and endswith(\".jar\")) | .browser_download_url")
-FILE_URL2=$(curl https://api.github.com/repos/$ORG/$REPO2/releases/latest | jq -r ".assets[] | select(.name | startswith(\"revanced-cli-\") and endswith(\".jar\")) | .browser_download_url")
-FILE_URL3=$(curl https://api.github.com/repos/$ORG/$REPO3/releases/latest | jq -r ".assets[] | select(.name | startswith(\"app-\") and endswith(\".apk\")) | .browser_download_url")
-
-echo "downloading required files for patching (around 60mb), it will automatically removed after finished patching"
-# Download the files
-curl -L $FILE_URL3 -o inte.apk -s
-curl -L $FILE_URL2 -o revanced-cli.jar -s
-curl -L $FILE_URL1 -o revanced-patches.jar -s
-curl -OL https://github.com/HoriKyoukosimp/goofyahh/releases/download/aapt2/aapt2 -s
-wget https://raw.githubusercontent.com/decipher3114/Revancify/main/revanced.keystore -P /data/data/com.termux/files/home/.keystore -nc -q
 
 # create options.toml
 touch options.toml
@@ -74,6 +53,26 @@ if [ "$patch" -eq 1 ]; then
  sed -i "s/YouTube_AppName.*/YouTube_AppName = \"$app_name\"/" options.toml
  sed -i "s/YouTube_PackageName.*/YouTube_PackageName = \"$package_name\"/" options.toml
  
+ download_additional_files() {
+   # Set the repository owner, name, and the file name
+ORG=inotia00
+REPO1=revanced-patches
+REPO2=revanced-cli
+REPO3=revanced-integrations
+
+# Get the URL of the file from the latest release
+FILE_URL1=$(curl https://api.github.com/repos/$ORG/$REPO1/releases/latest | jq -r ".assets[] | select(.name | startswith(\"revanced-patches-\") and endswith(\".jar\")) | .browser_download_url")
+FILE_URL2=$(curl https://api.github.com/repos/$ORG/$REPO2/releases/latest | jq -r ".assets[] | select(.name | startswith(\"revanced-cli-\") and endswith(\".jar\")) | .browser_download_url")
+FILE_URL3=$(curl https://api.github.com/repos/$ORG/$REPO3/releases/latest | jq -r ".assets[] | select(.name | startswith(\"app-\") and endswith(\".apk\")) | .browser_download_url")
+
+echo "downloading required files for patching (around 60mb), it will automatically removed after finished patching"
+# Download the files
+curl -L $FILE_URL3 -o inte.apk -s
+curl -L $FILE_URL2 -o revanced-cli.jar -s
+curl -L $FILE_URL1 -o revanced-patches.jar -s
+curl -OL https://github.com/HoriKyoukosimp/goofyahh/releases/download/aapt2/aapt2 -s
+wget https://raw.githubusercontent.com/decipher3114/Revancify/main/revanced.keystore -P /data/data/com.termux/files/home/.keystore -nc -q
+ }
  WGET_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
 
  #download youtube
@@ -99,24 +98,6 @@ if [ "$patch" -eq 1 ]; then
      req "$url" "$2"
  }
 
- # Get the latest version of YouTube
- get_latestytversion
-
- # Check if the latest YouTube version was retrieved successfully
- if [ -z "$YTVERSION" ]; then
-     echo "Error: Unable to retrieve latest YouTube version"
-     exit 1
- fi
-
- # Download the latest version of YouTube
- dl_yt "$YTVERSION" "YouTube.apk"
- 
- # Check if the YouTube app was downloaded successfully
- if [ ! -f "YouTube.apk" ]; then
-     echo "Error: Unable to download YouTube app"
-     exit 1
- fi
-
  clear
 
  # Prompt the user to select a theme option
@@ -137,7 +118,11 @@ if [ "$patch" -eq 1 ]; then
    echo "4 is YouTube Original Icon"
    
    clear
-
+   
+   download_additional_files
+   
+   clear
+   
    # Initialize the icon variable to an empty string
    icon=""
 
@@ -145,7 +130,26 @@ if [ "$patch" -eq 1 ]; then
    while [ -z "$icon" ] || [ "$icon" != "1" ] && [ "$icon" != "2" ] && [ "$icon" != "3" ]; do
      # Read the value of the icon variable
      read icon
+     clear
+     
+      # Get the latest version of YouTube
+ get_latestytversion
 
+ # Check if the latest YouTube version was retrieved successfully
+    if [ -z "$YTVERSION" ]; then
+        echo "Error: Unable to retrieve latest YouTube version"
+        exit 1
+    fi
+
+    # Download the latest version of YouTube
+    dl_yt "$YTVERSION" "YouTube.apk"
+ 
+    # Check if the YouTube app was downloaded successfully
+    if [ ! -f "YouTube.apk" ]; then
+        echo "Error: Unable to download YouTube app"
+        exit 1
+      fi
+      
      # Modify the command string based on the value of the icon variable
      if [ -n "$icon" ]; then
        # If the icon is not blank, modify the command string based on the value of the icon variable
@@ -182,7 +186,10 @@ if [ "$patch" -eq 1 ]; then
    echo "4 is YouTube Original Icon"
 
   clear
-
+  
+  download_additional_files
+  
+  clear
    # Initialize the icon variable to an empty string
    icon=""
 
@@ -190,7 +197,28 @@ if [ "$patch" -eq 1 ]; then
    while [ -z "$icon" ] || [ "$icon" != "1" ] && [ "$icon" != "2" ] && [ "$icon" != "3" ]; do
      # Read the value of the icon variable
      read icon
+     clear
+     
+      # Get the latest version of YouTube
+ get_latestytversion
 
+ # Check if the latest YouTube version was retrieved successfully
+    if [ -z "$YTVERSION" ]; then
+        echo "Error: Unable to retrieve latest YouTube version"
+        exit 1
+    fi
+
+    # Download the latest version of YouTube
+    dl_yt "$YTVERSION" "YouTube.apk"
+ 
+    # Check if the YouTube app was downloaded successfully
+    if [ ! -f "YouTube.apk" ]; then
+        echo "Error: Unable to download YouTube app"
+        exit 1
+      fi
+      
+  clear
+  
      # Modify the command string based on the value of the icon variable
      if [ -n "$icon" ]; then
        # If the icon is not blank, modify the command string based on the value of the icon variable
@@ -230,7 +258,11 @@ if [ "$patch" -eq 1 ]; then
    echo "4 is YouTube Original Icon"
 
   clear
-
+  
+  download_additional_files
+  
+  clear
+  
    # Initialize the icon variable to an empty string
    icon=""
 
@@ -238,7 +270,28 @@ if [ "$patch" -eq 1 ]; then
    while [ -z "$icon" ] || [ "$icon" != "1" ] && [ "$icon" != "2" ] && [ "$icon" != "3" ]; do
      # Read the value of the icon variable
      read icon
+     clear
+     
+      # Get the latest version of YouTube
+ get_latestytversion
 
+ # Check if the latest YouTube version was retrieved successfully
+    if [ -z "$YTVERSION" ]; then
+        echo "Error: Unable to retrieve latest YouTube version"
+        exit 1
+    fi
+
+    # Download the latest version of YouTube
+    dl_yt "$YTVERSION" "YouTube.apk"
+ 
+    # Check if the YouTube app was downloaded successfully
+    if [ ! -f "YouTube.apk" ]; then
+        echo "Error: Unable to download YouTube app"
+        exit 1
+      fi
+  
+  clear
+  
      # Modify the command string based on the value of the icon variable
      if [ -n "$icon" ]; then
        # If the icon is not blank, modify the command string based on the value of the icon variable
@@ -278,7 +331,10 @@ if [ "$patch" -eq 1 ]; then
    echo "4 is YouTube Original Icon"
 
    clear
-
+   
+   download_additional_files
+   
+   clear
    # Initialize the icon variable to an empty string
    icon=""
 
@@ -286,6 +342,27 @@ if [ "$patch" -eq 1 ]; then
    while [ -z "$icon" ] || [ "$icon" != "1" ] && [ "$icon" != "2" ] && [ "$icon" != "3" ]; do
      # Read the value of the icon variable
      read icon
+     clear
+     
+      # Get the latest version of YouTube
+ get_latestytversion
+
+ # Check if the latest YouTube version was retrieved successfully
+    if [ -z "$YTVERSION" ]; then
+        echo "Error: Unable to retrieve latest YouTube version"
+        exit 1
+    fi
+
+    # Download the latest version of YouTube
+    dl_yt "$YTVERSION" "YouTube.apk"
+ 
+    # Check if the YouTube app was downloaded successfully
+    if [ ! -f "YouTube.apk" ]; then
+        echo "Error: Unable to download YouTube app"
+        exit 1
+      fi
+
+clear
 
      # Modify the command string based on the value of the icon variable
      if [ -n "$icon" ]; then
@@ -352,24 +429,6 @@ elif [ "$patch" -eq 2 ]; then
     req "$url" "$2"
  }
 
-  # Get the latest version of YouTube music
- get_latestytmversion
-
- # Check if the latest YouTube version was retrieved successfully
- if [ -z "$YTMVERSION" ]; then
-     echo "Error: Unable to retrieve latest YouTube music version"
-     exit 1
- fi
-
- # Download the latest version of YouTube music
-  dl_ytm "$YTMVERSION" "YouTube_Music.apk"
-
- # Check if the YouTube app was downloaded successfully
- if [ ! -f "YouTube_Music.apk" ]; then
-     echo "Error: Unable to download YouTube music app"
-     exit 1
- fi
-
    clear
    echo "Select an icon color:"
    echo "1 is red"
@@ -377,11 +436,34 @@ elif [ "$patch" -eq 2 ]; then
    echo "3 is YouTube Original Icon"
    # Initialize the icon variable to an empty string
    icon=""
-
+   
+   clear
+   
+   download_additional_files
+   
+   clear
    # Start a while loop to prompt the user for input
    while [ -z "$icon" ] || [ "$icon" != "1" ] && [ "$icon" != "2" ] && [ "$icon" != "3" ]; do
      # Read the value of the icon variable
      read icon
+  # Get the latest version of YouTube music
+  
+    get_latestytmversion
+ 
+    # Check if the latest YouTube version was retrieved successfully
+    if [ -z "$YTMVERSION" ]; then
+        echo "Error: Unable to retrieve latest YouTube music version"
+        exit 1
+    fi
+
+    # Download the latest version of YouTube music
+     dl_ytm "$YTMVERSION" "YouTube_Music.apk"
+
+    # Check if the YouTube app was downloaded successfully
+    if [ ! -f "YouTube_Music.apk" ]; then
+        echo "Error: Unable to download YouTube music app"
+        exit 1
+    fi
 
      # Modify the command string based on the value of the icon variable
      if [ -n "$icon" ]; then
