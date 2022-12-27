@@ -7,4 +7,4 @@ just some random revanced extended scripts
 
 ## how to execute this auto script?
 yeah for some reason, you probably dont know how to chmod or wget the thing so i will do it for you
-> cd && pkg i wget && wget https://raw.githubusercontent.com/HoriKyoukosimp/goofyahh/master/goofy.sh -O goofy.sh && chmod +x goofy.sh && ./goofy.sh
+> cd && pkg i wget && wget https://raw.githubusercontent.com/HoriKyoukosimp/goofyahh/dev/goofy.sh -O goofy.sh && chmod +x goofy.sh && ./goofy.sh
