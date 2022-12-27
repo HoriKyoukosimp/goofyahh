@@ -38,21 +38,6 @@ echo "1 is youtube"
 echo '2 is youtube music'
 read patch
 
- 
-
-if [ "$patch" -eq 1 ]; then
- # Prompt the user to enter the new values
- echo "Enter the new YouTube app name: "
- read app_name
- echo "Enter the new YouTube package name (have to be something like this: app.rvx.android.youtube or youtube.android.rvx (dont require youtube & android & rvx, it can be anything)): "
- read package_name
-
- 
-
- # Use sed to update the options.json file
- sed -i "s/YouTube_AppName.*/YouTube_AppName = \"$app_name\"/" options.toml
- sed -i "s/YouTube_PackageName.*/YouTube_PackageName = \"$package_name\"/" options.toml
- 
  download_additional_files() {
    # Set the repository owner, name, and the file name
 ORG=inotia00
@@ -73,11 +58,26 @@ curl -L $FILE_URL1 -o revanced-patches.jar -s
 curl -OL https://github.com/HoriKyoukosimp/goofyahh/releases/download/aapt2/aapt2 -s
 wget https://raw.githubusercontent.com/decipher3114/Revancify/main/revanced.keystore -P /data/data/com.termux/files/home/.keystore -nc -q
  }
+
+if [ "$patch" -eq 1 ]; then
+ # Prompt the user to enter the new values
+ echo "Enter the new YouTube app name: "
+ read app_name
+ echo "Enter the new YouTube package name (have to be something like this: app.rvx.android.youtube or youtube.android.rvx (dont require youtube & android & rvx, it can be anything)): "
+ read package_name
+
+ 
+
+ # Use sed to update the options.json file
+ sed -i "s/YouTube_AppName.*/YouTube_AppName = \"$app_name\"/" options.toml
+ sed -i "s/YouTube_PackageName.*/YouTube_PackageName = \"$package_name\"/" options.toml
+ 
+ 
  WGET_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
 
  #download youtube
  req() {
-    wget -q -O "$2" --header="$WGET_HEADER" "$1"
+    wget -O "$2" --header="$WGET_HEADER" "$1"
  }
 
  get_latestytversion() {
