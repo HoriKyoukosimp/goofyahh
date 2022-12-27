@@ -19,7 +19,7 @@ mkdir rvxtemp
 mkdir .keystore
 cd rvxtemp
 
-
+clear
 
 # create options.toml
 touch options.toml
@@ -31,7 +31,7 @@ echo 'Custom_Speed_Arrays = "0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0, 2.25"' 
 echo 'Overlay_Buttons_Icon = "new"' >> options.toml
 echo 'darkThemeBackgroundColor = "@android:color/black"' >> options.toml
 
-
+clear
 
 echo "select app you want to patch"
 echo "1 is youtube"
@@ -66,7 +66,7 @@ if [ "$patch" -eq 1 ]; then
  echo "Enter the new YouTube package name (have to be something like this: app.rvx.android.youtube or youtube.android.rvx (dont require youtube & android & rvx, it can be anything)): "
  read package_name
 
- 
+ clear
 
  # Use sed to update the options.json file
  sed -i "s/YouTube_AppName.*/YouTube_AppName = \"$app_name\"/" options.toml
@@ -98,9 +98,10 @@ if [ "$patch" -eq 1 ]; then
      req "$url" "$2"
  }
 
- 
+ clear
 
  # Prompt the user to select a theme option
+ clear
  echo "Select a theme option:"
  echo "1 is default"
  echo "2 is monet/material you"
@@ -110,6 +111,7 @@ if [ "$patch" -eq 1 ]; then
  read numbers
 
   if [ "$numbers" -eq 1 ]; then
+  clear
    # Prompt the user to select an icon color
    echo "Select an icon color:"
    echo "1 is red"
@@ -126,6 +128,7 @@ if [ "$patch" -eq 1 ]; then
      # Read the value of the icon variable
      read icon
      
+     clear
      download_additional_files
      clear
      
@@ -146,7 +149,7 @@ if [ "$patch" -eq 1 ]; then
           echo "Error: Unable to download YouTube app"
           exit 1
         fi
-      
+      clear
      # Modify the command string based on the value of the icon variable
      if [ -n "$icon" ]; then
        # If the icon is not blank, modify the command string based on the value of the icon variable
@@ -175,6 +178,7 @@ if [ "$patch" -eq 1 ]; then
    done
    
   elif [ "$numbers" -eq 2 ]; then
+  clear
    # Prompt the user to select an icon color
    echo "Select an icon color:"
    echo "1 is red"
@@ -193,6 +197,7 @@ if [ "$patch" -eq 1 ]; then
      clear
      download_additional_files
      clear
+     
      # Get the latest version of YouTube
        get_latestytversion
 
@@ -211,7 +216,7 @@ if [ "$patch" -eq 1 ]; then
           exit 1
         fi
       
-  
+   clear
   
      # Modify the command string based on the value of the icon variable
      if [ -n "$icon" ]; then
@@ -244,6 +249,7 @@ if [ "$patch" -eq 1 ]; then
    done
    
   elif [ "$numbers" -eq 3 ]; then
+  clear
    # Prompt the user to select an icon color
    echo "Select an icon color:"
    echo "1 is red"
@@ -280,7 +286,7 @@ if [ "$patch" -eq 1 ]; then
           exit 1
         fi
       
-  
+   clear
   
      # Modify the command string based on the value of the icon variable
      if [ -n "$icon" ]; then
@@ -313,6 +319,7 @@ if [ "$patch" -eq 1 ]; then
    done 
 
    elif [ "$numbers" -eq 4 ]; then
+   clear
    # Prompt the user to select an icon color
    echo "Select an icon color:"
    echo "1 is red"
@@ -351,7 +358,7 @@ if [ "$patch" -eq 1 ]; then
           exit 1
         fi
       
-
+  clear
 
      # Modify the command string based on the value of the icon variable
      if [ -n "$icon" ]; then
@@ -385,7 +392,7 @@ if [ "$patch" -eq 1 ]; then
  fi
 elif [ "$patch" -eq 2 ]; then
 
-  echo unable to change youtube music app name
+  echo "unable to change youtube music app name (limitation for now)"
   echo "Enter the new YouTube package name (have to be something like this: app.rvx.android.youtube or youtube.android.rvx (dont require youtube & android & rvx, it can be anything)): "
   read package_name
 
@@ -418,7 +425,7 @@ elif [ "$patch" -eq 2 ]; then
     req "$url" "$2"
  }
 
-   
+   clear
    echo "Select an icon color:"
    echo "1 is red"
    echo "2 is revancify"
@@ -433,7 +440,9 @@ elif [ "$patch" -eq 2 ]; then
      # Read the value of the icon variable
      read icon
      
+     clear
      download_additional_files
+     clear
   # Get the latest version of YouTube music
   
       get_latestytmversion
@@ -452,7 +461,7 @@ elif [ "$patch" -eq 2 ]; then
           echo "Error: Unable to download YouTube music app"
           exit 1
       fi
-
+     clear
      # Modify the command string based on the value of the icon variable
      if [ -n "$icon" ]; then
        # If the icon is not blank, modify the command string based on the value of the icon variable
@@ -483,6 +492,6 @@ else
 cd || exit
 rm -r -d rvxtemp
 
-
+clear
 echo "thanks for using my script! hope you have fun with revanced extended!"
 echo "if for whatever reason the package installer didnt pop up, u can go to your file manager app, u will see folder named "revanced extended apks" install the apk from there"
