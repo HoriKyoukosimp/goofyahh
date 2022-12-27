@@ -19,7 +19,7 @@ mkdir rvxtemp
 mkdir .keystore
 cd rvxtemp
 
-clear
+
 
 # create options.toml
 touch options.toml
@@ -31,14 +31,14 @@ echo 'Custom_Speed_Arrays = "0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0, 2.25"' 
 echo 'Overlay_Buttons_Icon = "new"' >> options.toml
 echo 'darkThemeBackgroundColor = "@android:color/black"' >> options.toml
 
-clear
+
 
 echo "select app you want to patch"
 echo "1 is youtube"
 echo '2 is youtube music'
 read patch
 
-clear 
+ 
 
 if [ "$patch" -eq 1 ]; then
  # Prompt the user to enter the new values
@@ -47,7 +47,7 @@ if [ "$patch" -eq 1 ]; then
  echo "Enter the new YouTube package name (have to be something like this: app.rvx.android.youtube or youtube.android.rvx (dont require youtube & android & rvx, it can be anything)): "
  read package_name
 
- clear
+ 
 
  # Use sed to update the options.json file
  sed -i "s/YouTube_AppName.*/YouTube_AppName = \"$app_name\"/" options.toml
@@ -98,7 +98,7 @@ wget https://raw.githubusercontent.com/decipher3114/Revancify/main/revanced.keys
      req "$url" "$2"
  }
 
- clear
+ 
 
  # Prompt the user to select a theme option
  echo "Select a theme option:"
@@ -117,11 +117,11 @@ wget https://raw.githubusercontent.com/decipher3114/Revancify/main/revanced.keys
    echo "3 is revancify"
    echo "4 is YouTube Original Icon"
    
-   clear
+   
    
    download_additional_files
    
-   clear
+   
    
    # Initialize the icon variable to an empty string
    icon=""
@@ -130,7 +130,7 @@ wget https://raw.githubusercontent.com/decipher3114/Revancify/main/revanced.keys
    while [ -z "$icon" ] || [ "$icon" != "1" ] && [ "$icon" != "2" ] && [ "$icon" != "3" ]; do
      # Read the value of the icon variable
      read icon
-     clear
+     
      
       # Get the latest version of YouTube
       get_latestytversion
@@ -185,11 +185,11 @@ wget https://raw.githubusercontent.com/decipher3114/Revancify/main/revanced.keys
    echo "3 is revancify"
    echo "4 is YouTube Original Icon"
 
-  clear
+  
   
   download_additional_files
   
-  clear
+  
    # Initialize the icon variable to an empty string
    icon=""
 
@@ -197,7 +197,7 @@ wget https://raw.githubusercontent.com/decipher3114/Revancify/main/revanced.keys
    while [ -z "$icon" ] || [ "$icon" != "1" ] && [ "$icon" != "2" ] && [ "$icon" != "3" ]; do
      # Read the value of the icon variable
      read icon
-     clear
+     
      
       # Get the latest version of YouTube
       get_latestytversion
@@ -217,7 +217,7 @@ wget https://raw.githubusercontent.com/decipher3114/Revancify/main/revanced.keys
          exit 1
        fi
       
-  clear
+  
   
      # Modify the command string based on the value of the icon variable
      if [ -n "$icon" ]; then
@@ -257,11 +257,11 @@ wget https://raw.githubusercontent.com/decipher3114/Revancify/main/revanced.keys
    echo "3 is revancify"
    echo "4 is YouTube Original Icon"
 
-  clear
+  
   
   download_additional_files
   
-  clear
+  
   
    # Initialize the icon variable to an empty string
    icon=""
@@ -270,7 +270,7 @@ wget https://raw.githubusercontent.com/decipher3114/Revancify/main/revanced.keys
    while [ -z "$icon" ] || [ "$icon" != "1" ] && [ "$icon" != "2" ] && [ "$icon" != "3" ]; do
      # Read the value of the icon variable
      read icon
-     clear
+     
      
       # Get the latest version of YouTube
       get_latestytversion
@@ -290,7 +290,7 @@ wget https://raw.githubusercontent.com/decipher3114/Revancify/main/revanced.keys
          exit 1
        fi
       
-  clear
+  
   
      # Modify the command string based on the value of the icon variable
      if [ -n "$icon" ]; then
@@ -330,11 +330,11 @@ wget https://raw.githubusercontent.com/decipher3114/Revancify/main/revanced.keys
    echo "3 is revancify"
    echo "4 is YouTube Original Icon"
 
-   clear
+   
    
    download_additional_files
    
-   clear
+   
    # Initialize the icon variable to an empty string
    icon=""
 
@@ -342,7 +342,7 @@ wget https://raw.githubusercontent.com/decipher3114/Revancify/main/revanced.keys
    while [ -z "$icon" ] || [ "$icon" != "1" ] && [ "$icon" != "2" ] && [ "$icon" != "3" ]; do
      # Read the value of the icon variable
      read icon
-     clear
+     
      
       # Get the latest version of YouTube
       get_latestytversion
@@ -362,7 +362,7 @@ wget https://raw.githubusercontent.com/decipher3114/Revancify/main/revanced.keys
          exit 1
        fi
       
-clear
+
 
      # Modify the command string based on the value of the icon variable
      if [ -n "$icon" ]; then
@@ -400,7 +400,7 @@ elif [ "$patch" -eq 2 ]; then
   echo "Enter the new YouTube package name (have to be something like this: app.rvx.android.youtube or youtube.android.rvx (dont require youtube & android & rvx, it can be anything)): "
   read package_name
 
-  clear
+  
 
   # Use sed to update the options.json file
   sed -i "s/Music_PackageName.*/Music_PackageName = \"$package_name\"/" options.toml
@@ -429,7 +429,7 @@ elif [ "$patch" -eq 2 ]; then
     req "$url" "$2"
  }
 
-   clear
+   
    echo "Select an icon color:"
    echo "1 is red"
    echo "2 is revancify"
@@ -437,11 +437,11 @@ elif [ "$patch" -eq 2 ]; then
    # Initialize the icon variable to an empty string
    icon=""
    
-   clear
+   
    
    download_additional_files
    
-   clear
+   
    # Start a while loop to prompt the user for input
    while [ -z "$icon" ] || [ "$icon" != "1" ] && [ "$icon" != "2" ] && [ "$icon" != "3" ]; do
      # Read the value of the icon variable
@@ -494,7 +494,7 @@ else
   fi
 cd || exit
 rm -r -d rvxtemp
-clear
+
 
 echo "thanks for using my script! hope you have fun with revanced extended!"
 echo "if for whatever reason the package installer didnt pop up, u can go to your file manager app, u will see folder named "revanced extended apks" install the apk from there"
