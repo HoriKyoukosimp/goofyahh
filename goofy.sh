@@ -89,8 +89,6 @@ if [ "$patch" -eq 1 ]; then
  dl_yt() {
      rm -rf $2
      echo "Downloading YouTube $1"
-     echo "dont worry, the script is downloading youtube"
-     echo "i just dont know how to make req show progress"
      url="https://www.apkmirror.com/apk/google-inc/youtube/youtube-${1//./-}-release/"
      url="$url$(req "$url" - | grep Variant -A50 | grep ">APK<" -A2 | grep android-apk-download | sed "s#.*-release/##g;s#/\#.*##g")"
      url="https://www.apkmirror.com$(req "$url" - | tr '\n' ' ' | sed -n 's;.*href="\(.*key=[^"]*\)">.*;\1;p')"
