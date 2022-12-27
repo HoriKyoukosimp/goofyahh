@@ -117,38 +117,35 @@ if [ "$patch" -eq 1 ]; then
    echo "3 is revancify"
    echo "4 is YouTube Original Icon"
    
-   
-   
-   download_additional_files
-   
-   
-   
    # Initialize the icon variable to an empty string
    icon=""
-
+   
+   
    # Start a while loop to prompt the user for input
    while [ -z "$icon" ] || [ "$icon" != "1" ] && [ "$icon" != "2" ] && [ "$icon" != "3" ]; do
      # Read the value of the icon variable
      read icon
      
+     download_additional_files
+     clear
      
-      # Get the latest version of YouTube
-      get_latestytversion
+     # Get the latest version of YouTube
+       get_latestytversion
 
- # Check if the latest YouTube version was retrieved successfully
-     if [ -z "$YTVERSION" ]; then
-         echo "Error: Unable to retrieve latest YouTube version"
-         exit 1
-     fi
+  # Check if the latest YouTube version was retrieved successfully
+      if [ -z "$YTVERSION" ]; then
+          echo "Error: Unable to retrieve latest YouTube version"
+          exit 1
+      fi
 
-     # Download the latest version of YouTube
-     dl_yt "$YTVERSION" "YouTube.apk"
+      # Download the latest version of YouTube
+      dl_yt "$YTVERSION" "YouTube.apk"
  
-     # Check if the YouTube app was downloaded successfully
-     if [ ! -f "YouTube.apk" ]; then
-         echo "Error: Unable to download YouTube app"
-         exit 1
-       fi
+      # Check if the YouTube app was downloaded successfully
+      if [ ! -f "YouTube.apk" ]; then
+          echo "Error: Unable to download YouTube app"
+          exit 1
+        fi
       
      # Modify the command string based on the value of the icon variable
      if [ -n "$icon" ]; then
@@ -184,11 +181,6 @@ if [ "$patch" -eq 1 ]; then
    echo "2 is blue"
    echo "3 is revancify"
    echo "4 is YouTube Original Icon"
-
-  
-  
-  download_additional_files
-  
   
    # Initialize the icon variable to an empty string
    icon=""
@@ -198,24 +190,26 @@ if [ "$patch" -eq 1 ]; then
      # Read the value of the icon variable
      read icon
      
-     
-      # Get the latest version of YouTube
-      get_latestytversion
+     clear
+     download_additional_files
+     clear
+     # Get the latest version of YouTube
+       get_latestytversion
 
- # Check if the latest YouTube version was retrieved successfully
-     if [ -z "$YTVERSION" ]; then
-         echo "Error: Unable to retrieve latest YouTube version"
-         exit 1
-     fi
+  # Check if the latest YouTube version was retrieved successfully
+      if [ -z "$YTVERSION" ]; then
+          echo "Error: Unable to retrieve latest YouTube version"
+          exit 1
+      fi
 
-     # Download the latest version of YouTube
-     dl_yt "$YTVERSION" "YouTube.apk"
+      # Download the latest version of YouTube
+      dl_yt "$YTVERSION" "YouTube.apk"
  
-     # Check if the YouTube app was downloaded successfully
-     if [ ! -f "YouTube.apk" ]; then
-         echo "Error: Unable to download YouTube app"
-         exit 1
-       fi
+      # Check if the YouTube app was downloaded successfully
+      if [ ! -f "YouTube.apk" ]; then
+          echo "Error: Unable to download YouTube app"
+          exit 1
+        fi
       
   
   
@@ -256,12 +250,6 @@ if [ "$patch" -eq 1 ]; then
    echo "2 is blue"
    echo "3 is revancify"
    echo "4 is YouTube Original Icon"
-
-  
-  
-  download_additional_files
-  
-  
   
    # Initialize the icon variable to an empty string
    icon=""
@@ -271,24 +259,26 @@ if [ "$patch" -eq 1 ]; then
      # Read the value of the icon variable
      read icon
      
-     
-      # Get the latest version of YouTube
-      get_latestytversion
+     clear
+     download_additional_files
+     clear
+     # Get the latest version of YouTube
+       get_latestytversion
 
- # Check if the latest YouTube version was retrieved successfully
-     if [ -z "$YTVERSION" ]; then
-         echo "Error: Unable to retrieve latest YouTube version"
-         exit 1
-     fi
+  # Check if the latest YouTube version was retrieved successfully
+      if [ -z "$YTVERSION" ]; then
+          echo "Error: Unable to retrieve latest YouTube version"
+          exit 1
+      fi
 
-     # Download the latest version of YouTube
-     dl_yt "$YTVERSION" "YouTube.apk"
+      # Download the latest version of YouTube
+      dl_yt "$YTVERSION" "YouTube.apk"
  
-     # Check if the YouTube app was downloaded successfully
-     if [ ! -f "YouTube.apk" ]; then
-         echo "Error: Unable to download YouTube app"
-         exit 1
-       fi
+      # Check if the YouTube app was downloaded successfully
+      if [ ! -f "YouTube.apk" ]; then
+          echo "Error: Unable to download YouTube app"
+          exit 1
+        fi
       
   
   
@@ -329,11 +319,6 @@ if [ "$patch" -eq 1 ]; then
    echo "2 is blue"
    echo "3 is revancify"
    echo "4 is YouTube Original Icon"
-
-   
-   
-   download_additional_files
-   
    
    # Initialize the icon variable to an empty string
    icon=""
@@ -343,24 +328,28 @@ if [ "$patch" -eq 1 ]; then
      # Read the value of the icon variable
      read icon
      
+     clear
+     download_additional_files
+     clear
+
      
-      # Get the latest version of YouTube
-      get_latestytversion
+     # Get the latest version of YouTube
+       get_latestytversion
 
- # Check if the latest YouTube version was retrieved successfully
-     if [ -z "$YTVERSION" ]; then
-         echo "Error: Unable to retrieve latest YouTube version"
-         exit 1
-     fi
+  # Check if the latest YouTube version was retrieved successfully
+      if [ -z "$YTVERSION" ]; then
+          echo "Error: Unable to retrieve latest YouTube version"
+          exit 1
+      fi
 
-     # Download the latest version of YouTube
-     dl_yt "$YTVERSION" "YouTube.apk"
+      # Download the latest version of YouTube
+      dl_yt "$YTVERSION" "YouTube.apk"
  
-     # Check if the YouTube app was downloaded successfully
-     if [ ! -f "YouTube.apk" ]; then
-         echo "Error: Unable to download YouTube app"
-         exit 1
-       fi
+      # Check if the YouTube app was downloaded successfully
+      if [ ! -f "YouTube.apk" ]; then
+          echo "Error: Unable to download YouTube app"
+          exit 1
+        fi
       
 
 
@@ -439,31 +428,30 @@ elif [ "$patch" -eq 2 ]; then
    
    
    
-   download_additional_files
-   
-   
    # Start a while loop to prompt the user for input
    while [ -z "$icon" ] || [ "$icon" != "1" ] && [ "$icon" != "2" ] && [ "$icon" != "3" ]; do
      # Read the value of the icon variable
      read icon
+     
+     download_additional_files
   # Get the latest version of YouTube music
   
-     get_latestytmversion
+      get_latestytmversion
  
-     # Check if the latest YouTube version was retrieved successfully
-     if [ -z "$YTMVERSION" ]; then
-         echo "Error: Unable to retrieve latest YouTube music version"
-         exit 1
-     fi
+      # Check if the latest YouTube version was retrieved successfully
+      if [ -z "$YTMVERSION" ]; then
+          echo "Error: Unable to retrieve latest YouTube music version"
+          exit 1
+      fi
 
-     # Download the latest version of YouTube music
-      dl_ytm "$YTMVERSION" "YouTube_Music.apk"
+      # Download the latest version of YouTube music
+       dl_ytm "$YTMVERSION" "YouTube_Music.apk"
  
-     # Check if the YouTube app was downloaded successfully
-     if [ ! -f "YouTube_Music.apk" ]; then
-         echo "Error: Unable to download YouTube music app"
-         exit 1
-     fi
+      # Check if the YouTube app was downloaded successfully
+      if [ ! -f "YouTube_Music.apk" ]; then
+          echo "Error: Unable to download YouTube music app"
+          exit 1
+      fi
 
      # Modify the command string based on the value of the icon variable
      if [ -n "$icon" ]; then
