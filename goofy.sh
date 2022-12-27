@@ -38,7 +38,7 @@ echo "1 is youtube"
 echo '2 is youtube music'
 read patch
 
-cLear 
+clear 
 
 if [ "$patch" -eq 1 ]; then
  # Prompt the user to enter the new values
