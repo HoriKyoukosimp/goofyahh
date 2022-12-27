@@ -32,12 +32,7 @@ echo 'Overlay_Buttons_Icon = "new"' >> options.toml
 echo 'darkThemeBackgroundColor = "@android:color/black"' >> options.toml
 
 clear
-echo "select variant"
-echo "1 is non-root version"
-echo "2 is root version"
-read variant
 
-if [ "$variant" -eq 1 ]; then
 echo "select app you want to patch"
 echo "1 is youtube"
 echo '2 is youtube music'
@@ -64,10 +59,9 @@ curl -OL https://github.com/HoriKyoukosimp/goofyahh/releases/download/aapt2/aapt
 wget https://raw.githubusercontent.com/decipher3114/Revancify/main/revanced.keystore -P /data/data/com.termux/files/home/.keystore -nc -q
  }
 
-clear
+if [ "$patch" -eq 1 ]; then
  # Prompt the user to enter the new values
  echo "Enter the new YouTube app name: "
-if [ "$patch" -eq 1 ]; then
  read app_name
  echo "Enter the new YouTube package name (have to be something like this: app.rvx.android.youtube or youtube.android.rvx (dont require youtube & android & rvx, it can be anything)): "
  read package_name
@@ -285,8 +279,8 @@ if [ "$patch" -eq 1 ]; then
 
       # Download the latest version of YouTube
       dl_yt "$YTVERSION" "YouTube.apk"
-      # Check if the YouTube app was downloaded successfully
  
+      # Check if the YouTube app was downloaded successfully
       if [ ! -f "YouTube.apk" ]; then
           echo "Error: Unable to download YouTube app"
           exit 1
@@ -397,7 +391,7 @@ if [ "$patch" -eq 1 ]; then
    done 
  fi
 elif [ "$patch" -eq 2 ]; then
-clear
+
   echo "unable to change youtube music app name (limitation for now)"
   echo "Enter the new YouTube package name (have to be something like this: app.rvx.android.youtube or youtube.android.rvx (dont require youtube & android & rvx, it can be anything)): "
   read package_name
@@ -473,7 +467,7 @@ clear
        # If the icon is not blank, modify the command string based on the value of the icon variable
        if [ "$icon" == "1" ]; then
          # If the icon is "red", change custom-branding-any to "red"
-         command="java -jar revanced-cli.jar -a YouTube_Music.apk -c -b revanced-patches.jar --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2 --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -m inte.apk --experimental -o youtube_music_patched.apk -i custom-branding-name -i Custom-branding-music-red"
+         command="java -jar revanced-cli.jar -a YouTube_Music.apk -c -b revanced-patches.jar --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2 --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -m inte.apk --experimental -o youtube_music_patched.apk -i custom-branding-name -i Custom-branding-icon-music-red"
        elif [ "$icon" == "2" ]; then
          # If the icon is "revancify", change custom-branding-any to "revancify"
          command="java -jar revanced-cli.jar --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -a YouTube_Music.apk -c -b revanced-patches.jar -m inte.apk --experimental -o youtube_music_patched.apk -i custom-branding-name -i custom-branding-icon-revancify --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2"
@@ -495,12 +489,6 @@ else
   echo "Invalid input. Exiting the script..."
   exit 1
   fi
-elif [ "$variant" -eq 2 ]; then
- echo "which app do u want to patch?"
- echo "1 is youtube"
- echo "2 is youtube music"
- read rootapppatch
- if [ "$rootapppatch"]
 cd || exit
 rm -r -d rvxtemp
 
