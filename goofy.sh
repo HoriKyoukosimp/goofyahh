@@ -49,7 +49,7 @@ REPO3=revanced-integrations
 FILE_URL1=$(curl https://api.github.com/repos/$ORG/$REPO1/releases/latest | jq -r ".assets[] | select(.name | startswith(\"revanced-patches-\") and endswith(\".jar\")) | .browser_download_url")
 FILE_URL2=$(curl https://api.github.com/repos/$ORG/$REPO2/releases/latest | jq -r ".assets[] | select(.name | startswith(\"revanced-cli-\") and endswith(\".jar\")) | .browser_download_url")
 FILE_URL3=$(curl https://api.github.com/repos/$ORG/$REPO3/releases/latest | jq -r ".assets[] | select(.name | startswith(\"app-\") and endswith(\".apk\")) | .browser_download_url")
-PATCH_JSON=$(curl https://api.github.com/repos/$ORG/$REPO1/releases/latest | jq -r ".assets[] | select(.name | startswith(\"patches-\") and endswith(\".json\")) | .browser_download_url")
+PATCH_JSON=$(curl https://api.github.com/repos/$ORG/$REPO1/releases/latest | jq -r ".assets[] | select(.name | startswith(\"patches\") and endswith(\".json\")) | .browser_download_url")
 
 echo "downloading required files for patching (around 60mb), it will automatically removed after finished patching"
 # Download the files
