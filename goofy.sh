@@ -100,9 +100,8 @@ if [ "$patch" -eq 1 ]; then
       url="https://www.apkmirror.com$(req "$url" - | tr '\n' ' ' | sed -n 's;.*href="\(.*key=[^"]*\)">.*;\1;p')"
       req "$url" "$2"
   }
- clear
   elif [ "$ytver" -eq 2]; then
-  WGET_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
+   WGET_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
   
    req() {
      wget -O "$2" --header="$WGET_HEADER" "$1"
@@ -123,7 +122,7 @@ if [ "$patch" -eq 1 ]; then
       url="https://www.apkmirror.com$(req "$url" - | tr '\n' ' ' | sed -n 's;.*href="\(.*key=[^"]*\)">.*;\1;p')"
       req "$url" "$2"
   }
-   fi
+  fi
   # Prompt the user to select a theme option
   clear
   echo "Select a theme option:"
