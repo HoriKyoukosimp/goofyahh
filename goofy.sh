@@ -107,13 +107,13 @@ if [ "$patch" -eq 1 ]; then
      wget -O "$2" --header="$WGET_HEADER" "$1"
    }
 
-  get_latestytversion() {
+   get_latestytversion() {
       curl -L $PATCH_JSON -o patches.json -s
      YTVERSION=$(jq -r '.[] | select(.compatiblePackages[].name == "com.google.android.youtube") | .compatiblePackages[].versions | .[]' patches.json | sort -n | tail -1)
       echo "Latest Youtube Version: $YTVERSION"
  }
 
-  dl_yt() {
+   dl_yt() {
       rm -rf $2
       echo "Downloading YouTube $1"
       url="https://www.apkmirror.com/apk/google-inc/youtube/youtube-${1//./-}-release/"
