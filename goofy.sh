@@ -123,6 +123,7 @@ if [ "$patch" -eq 1 ]; then
       url="https://www.apkmirror.com$(req "$url" - | tr '\n' ' ' | sed -n 's;.*href="\(.*key=[^"]*\)">.*;\1;p')"
       req "$url" "$2"
   }
+   fi
   # Prompt the user to select a theme option
   clear
   echo "Select a theme option:"
