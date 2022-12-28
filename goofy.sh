@@ -49,6 +49,7 @@ REPO3=revanced-integrations
 FILE_URL1=$(curl https://api.github.com/repos/$ORG/$REPO1/releases/latest | jq -r ".assets[] | select(.name | startswith(\"revanced-patches-\") and endswith(\".jar\")) | .browser_download_url")
 FILE_URL2=$(curl https://api.github.com/repos/$ORG/$REPO2/releases/latest | jq -r ".assets[] | select(.name | startswith(\"revanced-cli-\") and endswith(\".jar\")) | .browser_download_url")
 FILE_URL3=$(curl https://api.github.com/repos/$ORG/$REPO3/releases/latest | jq -r ".assets[] | select(.name | startswith(\"app-\") and endswith(\".apk\")) | .browser_download_url")
+PATCH_JSON=$(curl https://api.github.com/repos/$ORG/$REPO1/releases/latest | jq -r ".assets[] | select(.name | startswith(\"patches-\") and endswith(\".json\")) | .browser_download_url")
 
 echo "downloading required files for patching (around 60mb), it will automatically removed after finished patching"
 # Download the files
@@ -72,57 +73,81 @@ if [ "$patch" -eq 1 ]; then
  sed -i "s/YouTube_AppName.*/YouTube_AppName = \"$app_name\"/" options.toml
  sed -i "s/YouTube_PackageName.*/YouTube_PackageName = \"$package_name\"/" options.toml
  
- 
- WGET_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
+ echo "select youtube version"
+ echo "1 is latest youtube version (beta included)"
+ echo "2 is latest supported version by rvx"
+ read ytver
+  if [ "$ytver" -eq 1]; then
+  WGET_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
 
- #download youtube
- req() {
-    wget -O "$2" --header="$WGET_HEADER" "$1"
+  #download youtube
+  req() {
+     wget -O "$2" --header="$WGET_HEADER" "$1"
+   }
+
+  get_latestytversion() {
+      url="https://www.apkmirror.com/apk/google-inc/youtube/"
+      YTVERSION=$(req "$url" - | grep "All version" -A200 | grep app_release | sed 's:.*/youtube-::g;s:-release/.*::g;s:-:.:g' | sort -r | head -1)
+      echo "Latest Youtube Version: $YTVERSION"
  }
 
- get_latestytversion() {
-     url="https://www.apkmirror.com/apk/google-inc/youtube/"
-     YTVERSION=$(req "$url" - | grep "All version" -A200 | grep app_release | sed 's:.*/youtube-::g;s:-release/.*::g;s:-:.:g' | sort -r | head -1)
-     echo "Latest Youtube Version: $YTVERSION"
- }
-
- dl_yt() {
-     rm -rf $2
-     echo "Downloading YouTube $1"
-     url="https://www.apkmirror.com/apk/google-inc/youtube/youtube-${1//./-}-release/"
-     url="$url$(req "$url" - | grep Variant -A50 | grep ">APK<" -A2 | grep android-apk-download | sed "s#.*-release/##g;s#/\#.*##g")"
-     url="https://www.apkmirror.com$(req "$url" - | tr '\n' ' ' | sed -n 's;.*href="\(.*key=[^"]*\)">.*;\1;p')"
-     url="https://www.apkmirror.com$(req "$url" - | tr '\n' ' ' | sed -n 's;.*href="\(.*key=[^"]*\)">.*;\1;p')"
-     req "$url" "$2"
- }
-
+  dl_yt() {
+      rm -rf $2
+      echo "Downloading YouTube $1"
+      url="https://www.apkmirror.com/apk/google-inc/youtube/youtube-${1//./-}-release/"
+      url="$url$(req "$url" - | grep Variant -A50 | grep ">APK<" -A2 | grep android-apk-download | sed "s#.*-release/##g;s#/\#.*##g")"
+      url="https://www.apkmirror.com$(req "$url" - | tr '\n' ' ' | sed -n 's;.*href="\(.*key=[^"]*\)">.*;\1;p')"
+      url="https://www.apkmirror.com$(req "$url" - | tr '\n' ' ' | sed -n 's;.*href="\(.*key=[^"]*\)">.*;\1;p')"
+      req "$url" "$2"
+  }
  clear
+  elif [ "$ytver" -eq 2]; then
+  WGET_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
+  
+   req() {
+     wget -O "$2" --header="$WGET_HEADER" "$1"
+   }
 
- # Prompt the user to select a theme option
- clear
- echo "Select a theme option:"
- echo "1 is default"
- echo "2 is monet/material you"
- echo "3 is amoled"
+  get_latestytversion() {
+      curl -L $PATCH_JSON -o patches.json -s
+     YTVERSION=$(jq -r '.[] | select(.compatiblePackages[].name == "com.google.android.youtube") | .compatiblePackages[].versions | .[]' patches.json | sort -n | tail -1)
+      echo "Latest Youtube Version: $YTVERSION"
+ }
 
- # Read the value of the numbers variable
- read numbers
-
-  if [ "$numbers" -eq 1 ]; then
+  dl_yt() {
+      rm -rf $2
+      echo "Downloading YouTube $1"
+      url="https://www.apkmirror.com/apk/google-inc/youtube/youtube-${1//./-}-release/"
+      url="$url$(req "$url" - | grep Variant -A50 | grep ">APK<" -A2 | grep android-apk-download | sed "s#.*-release/##g;s#/\#.*##g")"
+      url="https://www.apkmirror.com$(req "$url" - | tr '\n' ' ' | sed -n 's;.*href="\(.*key=[^"]*\)">.*;\1;p')"
+      url="https://www.apkmirror.com$(req "$url" - | tr '\n' ' ' | sed -n 's;.*href="\(.*key=[^"]*\)">.*;\1;p')"
+      req "$url" "$2"
+  }
+  # Prompt the user to select a theme option
   clear
+  echo "Select a theme option:"
+  echo "1 is default"
+  echo "2 is monet/material you"
+  echo "3 is amoled"
+
+  # Read the value of the numbers variable
+  read numbers
+
+   if [ "$numbers" -eq 1 ]; then
+   clear
    # Prompt the user to select an icon color
-   echo "Select an icon color:"
-   echo "1 is red"
-   echo "2 is blue"
-   echo "3 is revancify"
-   echo "4 is YouTube Original Icon"
+    echo "Select an icon color:"
+     echo "1 is red"
+    echo "2 is blue"
+    echo "3 is revancify"
+    echo "4 is YouTube Original Icon"
    
-   # Initialize the icon variable to an empty string
-   icon=""
+    # Initialize the icon variable to an empty string
+    icon=""
    
    
-   # Start a while loop to prompt the user for input
-   while [ -z "$icon" ] || [ "$icon" != "1" ] && [ "$icon" != "2" ] && [ "$icon" != "3" ]; do
+    # Start a while loop to prompt the user for input
+    while [ -z "$icon" ] || [ "$icon" != "1" ] && [ "$icon" != "2" ] && [ "$icon" != "3" ]; do
      # Read the value of the icon variable
      read icon
      
