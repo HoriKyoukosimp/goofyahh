@@ -81,17 +81,17 @@ if [ "$patch" -eq 1 ]; then
   WGET_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
 
   #download youtube
-  req() {
+   req() {
      wget -O "$2" --header="$WGET_HEADER" "$1"
    }
 
   get_latestytversion() {
-      url="https://www.apkmirror.com/apk/google-inc/youtube/"
+       url="https://www.apkmirror.com/apk/google-inc/youtube/"
       YTVERSION=$(req "$url" - | grep "All version" -A200 | grep app_release | sed 's:.*/youtube-::g;s:-release/.*::g;s:-:.:g' | sort -r | head -1)
       echo "Latest Youtube Version: $YTVERSION"
  }
 
-  dl_yt() {
+   dl_yt() {
       rm -rf $2
       echo "Downloading YouTube $1"
       url="https://www.apkmirror.com/apk/google-inc/youtube/youtube-${1//./-}-release/"
