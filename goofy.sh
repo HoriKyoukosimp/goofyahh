@@ -77,7 +77,7 @@ if [ "$patch" -eq 1 ]; then
  echo "1 is latest youtube version (beta included)"
  echo "2 is latest supported version by rvx"
  read ytver
-  if [ "$ytver" -eq 1]; then
+  if [ "$ytver" -eq 1 ]; then
   WGET_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
 
   #download youtube
@@ -100,7 +100,7 @@ if [ "$patch" -eq 1 ]; then
       url="https://www.apkmirror.com$(req "$url" - | tr '\n' ' ' | sed -n 's;.*href="\(.*key=[^"]*\)">.*;\1;p')"
       req "$url" "$2"
   }
-  elif [ "$ytver" -eq 2]; then
+  elif [ "$ytver" -eq 2 ]; then
    WGET_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
   
    req() {
