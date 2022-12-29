@@ -27,22 +27,10 @@ cd rvxtemp
 
 clear
 
-patchiconred() {
-   -a YouTube.apk -c -b revanced-patches.jar -m inte.apk --experimental -o youtube_patched.apk -i custom-branding-name -i custom-branding-icon-afn-red -e custom-branding-icon-afn-blue -e custom-branding-icon-revancify --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2
-}
-
-patchiconblue() {
-   -a YouTube.apk -c -b revanced-patches.jar --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -m inte.apk --experimental -o youtube_patched.apk -i custom-branding-name -i custom-branding-icon-afn-blue -e custom-branding-icon-revancify -e custom-branding-icon-afn-red --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2
-}
-
-patchiconrevancify() {
-   --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -a YouTube.apk -c -b revanced-patches.jar -m inte.apk --experimental -o youtube_patched.apk -i custom-branding-name -i custom-branding-icon-revancify -e custom-branding-icon-afn-blue -e custom-branding-icon-afn-red  --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2
-}
-
-patchiconog() {
-   -a YouTube.apk -c -b revanced-patches.jar -m inte.apk --experimental --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -o youtube_patched.apk -i custom-branding-name -e custom-branding-icon-revancify -e custom-branding-icon-afn-blue -e custom-branding-icon-afn-red --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2
-}
-
+patchiconred="-a YouTube.apk -c -b revanced-patches.jar -m inte.apk --experimental -o youtube_patched.apk -i custom-branding-name -i custom-branding-icon-afn-red -e custom-branding-icon-afn-blue -e custom-branding-icon-revancify --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2"
+patchiconblue"-a YouTube.apk -c -b revanced-patches.jar --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -m inte.apk --experimental -o youtube_patched.apk -i custom-branding-name -i custom-branding-icon-afn-blue -e custom-branding-icon-revancify -e custom-branding-icon-afn-red --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2"
+patchiconrevancify"keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -a YouTube.apk -c -b revanced-patches.jar -m inte.apk --experimental -o youtube_patched.apk -i custom-branding-name -i custom-branding-icon-revancify -e custom-branding-icon-afn-blue -e custom-branding-icon-afn-red  --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2"
+patchiconog"-a YouTube.apk -c -b revanced-patches.jar -m inte.apk --experimental --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -o youtube_patched.apk -i custom-branding-name -e custom-branding-icon-revancify -e custom-branding-icon-afn-blue -e custom-branding-icon-afn-red --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2"
 
 # create options.toml
 touch options.toml
@@ -201,16 +189,16 @@ if [ "$patch" -eq 1 ]; then
        # If the icon is not blank, modify the command string based on the value of the icon variable
        if [ "$icon" == "1" ]; then
          # If the icon is "red", change custom-branding-any to "red"
-         command=java -jar revanced-cli.jar patchiconred
+         command=java -jar revanced-cli.jar $patchiconred
        elif [ "$icon" == "2" ]; then
          # If the icon is "blue", change custom-branding-any to "blue"
-         command=java -jar revanced-cli.jar patchiconblue
+         command=java -jar revanced-cli.jar $patchiconblue
        elif [ "$icon" == "3" ]; then
          # If the icon is "revancify", change custom-branding-any to "revancify"
-         command=java -jar revanced-cli.jar patchiconrevancify
+         command=java -jar revanced-cli.jar $patchiconrevancify
         elif [ "$icon" == "4" ]; then
          # If the icon is "revancify", change custom-branding-any to "og"
-         command=java -jar revanced-cli.jar patchiconog
+         command=java -jar revanced-cli.jar $patchiconog
        else
            # If the icon is something else, print an error message and set the icon variable to an empty string
            echo "Invalid icon color. Please try again."
