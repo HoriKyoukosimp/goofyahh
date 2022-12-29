@@ -189,16 +189,16 @@ if [ "$patch" -eq 1 ]; then
        # If the icon is not blank, modify the command string based on the value of the icon variable
        if [ "$icon" == "1" ]; then
          # If the icon is "red", change custom-branding-any to "red"
-         command="$patchiconred -e theme -e material"
+         command="$patchiconred -e theme -e materialyou"
        elif [ "$icon" == "2" ]; then
          # If the icon is "blue", change custom-branding-any to "blue"
-         command="$patchiconblue -e theme -e material"
+         command="$patchiconblue -e theme -e materialyou"
        elif [ "$icon" == "3" ]; then
          # If the icon is "revancify", change custom-branding-any to "revancify"
-         command="$patchiconrevancify -e theme -e material"
+         command="$patchiconrevancify -e theme -e materialyou"
         elif [ "$icon" == "4" ]; then
          # If the icon is "revancify", change custom-branding-any to "og"
-         command="$patchiconog -e theme -e material"
+         command="$patchiconog -e theme -e materialyou"
        else
            # If the icon is something else, print an error message and set the icon variable to an empty string
            echo "Invalid icon color. Please try again."
@@ -257,16 +257,16 @@ if [ "$patch" -eq 1 ]; then
        # If the icon is not blank, modify the command string based on the value of the icon variable
        if [ "$icon" == "1" ]; then
          # If the icon is "red", change custom-branding-any to "red"
-         command="$patchiconred -e theme -i material"
+         command="$patchiconred -e theme -i materialyou"
        elif [ "$icon" == "2" ]; then
          # If the icon is "blue", change custom-branding-any to "blue"
-         command="$patchiconblue -e theme -i material"
+         command="$patchiconblue -e theme -i materialyou"
        elif [ "$icon" == "3" ]; then
          # If the icon is "revancify", change custom-branding-any to "revancify"
-         command="$patchiconrevancify -e theme -i material"
+         command="$patchiconrevancify -e theme -i materialyou"
         elif [ "$icon" == "4" ]; then
          # If the icon is "revancify", change custom-branding-any to "og"
-         command="$patchiconog -e theme -i material"   
+         command="$patchiconog -e theme -i materialyou"   
         else
          # If the icon is something else, print an error message and set the icon variable to an empty string
          echo "Invalid icon color. Please try again."
@@ -327,16 +327,16 @@ if [ "$patch" -eq 1 ]; then
        # If the icon is not blank, modify the command string based on the value of the icon variable
              if [ "$icon" == "1" ]; then
          # If the icon is "red", change custom-branding-any to "red"
-         command="$patchiconred -i theme -e material"
+         command="$patchiconred -i theme -e materialyou"
        elif [ "$icon" == "2" ]; then
          # If the icon is "blue", change custom-branding-any to "blue"
-         command="$patchiconblue -i theme -e material"
+         command="$patchiconblue -i theme -e materialyou"
        elif [ "$icon" == "3" ]; then
          # If the icon is "revancify", change custom-branding-any to "revancify"
-         command="$patchiconrevancify -i theme -e material"
+         command="$patchiconrevancify -i theme -e materialyou"
         elif [ "$icon" == "4" ]; then
          # If the icon is "revancify", change custom-branding-any to "og"
-         command="$patchiconog -i theme -e material"
+         command="$patchiconog -i theme -e materialyou"
         else
          # If the icon is something else, print an error message and set the icon variable to an empty string
          echo "Invalid icon color. Please try again."
@@ -399,16 +399,16 @@ if [ "$patch" -eq 1 ]; then
        # If the icon is not blank, modify the command string based on the value of the icon variable
        if [ "$icon" == "1" ]; then
          # If the icon is "red", change custom-branding-any to "red"
-         command="$patchiconred -i theme -i material"
+         command="$patchiconred -i theme -i materialyou"
        elif [ "$icon" == "2" ]; then
          # If the icon is "blue", change custom-branding-any to "blue"
-         command="$patchiconblue -i theme -i material"
+         command="$patchiconblue -i theme -i materialyou"
        elif [ "$icon" == "3" ]; then
          # If the icon is "revancify", change custom-branding-any to "revancify"
-         command="$patchiconrevancify -i theme -i material"
+         command="$patchiconrevancify -i theme -i materialyou"
         elif [ "$icon" == "4" ]; then
          # If the icon is "revancify", change custom-branding-any to "og"
-         command="$patchiconog -i theme -i material"
+         command="$patchiconog -i theme -i materialyou"
        else
          # If the icon is something else, print an error message and set the icon variable to an empty string
          echo "Invalid icon color. Please try again."
