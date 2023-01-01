@@ -140,6 +140,7 @@ if [ "$patch" -eq 1 ]; then
   echo "1 is default"
   echo "2 is monet/material you"
   echo "3 is amoled"
+  echo "4 is amoled + monet/material you"
 
   # Read the value of the numbers variable
   read numbers
