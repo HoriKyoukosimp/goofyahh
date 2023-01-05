@@ -438,7 +438,7 @@ elif [ "$patch" -eq 2 ]; then
   #download youtube music
  WGET_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
  req() {
-     wget -q -O "$2" --header="$WGET_HEADER" "$1"
+     wget -O "$2" --header="$WGET_HEADER" "$1"
  }
 
  get_latestytmversion() {
@@ -451,8 +451,6 @@ elif [ "$patch" -eq 2 ]; then
  dl_ytm() {
     rm -rf $2
     echo "Downloading YouTube Music $1"
-    echo "dont worry, tHe script is still running"
-    echo "i just dont know how to make req show progress"
     url="https://www.apkmirror.com/apk/google-inc/youtube-music/youtube-music-${1//./-}-release/"
     url="$url$(req "$url" - | grep arm64 -A30 | grep youtube-music | head -1 | sed "s#.*-release/##g;s#/\".*##g")"
     url="https://www.apkmirror.com$(req "$url" - | tr '\n' ' ' | sed -n 's;.*href="\(.*key=[^"]*\)">.*;\1;p')"
