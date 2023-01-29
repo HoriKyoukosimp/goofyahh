@@ -47,7 +47,7 @@ echo "select variants"
 echo "1 is non root (recommand)"
 echo "2 is root"
 read var
-if [ "var" -eq 1 ]; then
+if [ "$var" -eq 1 ]; then
  echo "select app you want to patch"
  echo "1 is youtube"
  echo '2 is youtube music'
@@ -526,7 +526,7 @@ if [ "var" -eq 1 ]; then
   echo "Invalid input. Exiting the script..."
   exit 1
   fi
-elif ["var" -eq 2 ]; then
+elif [ "$var" -eq 2 ]; then
  WGET_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
 
   #download youtube
@@ -597,7 +597,7 @@ elif ["var" -eq 2 ]; then
  curl -OL https://github.com/HoriKyoukosimp/goofyahh/releases/download/aapt2/aapt2 -s
  wget https://raw.githubusercontent.com/decipher3114/Revancify/main/revanced.keystore -P /data/data/com.termux/files/home/.keystore -nc -q
   }
- if { "patch" -eq 1 }; then
+ if [ "$patch" -eq 1 ]; then
   # Prompt the user to enter the new values
   echo "Enter the new YouTube app name: "
   read app_name
@@ -684,7 +684,7 @@ elif ["var" -eq 2 ]; then
    # Execute the modified command
    $command
    mkdir /sdcard/"revanced extended apks" && mv  youtube_patched.apk /sdcard/"revanced extended apks"    
-   su -mm -c 'grep com.google.android.youtube /proc/mounts | while read -r line; do echo $line | cut -d " " -f 2 | sed "s/apk.*/apk/" | xargs -r umount -l > /dev/null 2>&1; done &&\
+   su -mm -c 'grep com.google.android.youtube /proc/mounts  | cut -d " " -f 2 | sed "s/apk.*/apk/" | xargs -r umount -l > /dev/null 2>&1; done &&\
    cp /data/data/com.termux/files/home/storage/"revanced extended apks" "youtube_patched".apk /data/local/tmp/revanced.delete &&\
    mv /data/local/tmp/revanced.delete /data/adb/revanced/"com.google.android.youtube".apk &&\
    stockapp=$(pm path com.google.android.youtube | grep base | sed "s/package://g") &&\
@@ -761,7 +761,7 @@ elif ["var" -eq 2 ]; then
    # Execute the modified command
    $command
    mkdir /sdcard/"revanced extended apks" && mv  youtube_patched.apk /sdcard/"revanced extended apks"    
-   su -mm -c 'grep com.google.android.youtube /proc/mounts | while read -r line; do echo $line | cut -d " " -f 2 | sed "s/apk.*/apk/" | xargs -r umount -l > /dev/null 2>&1; done &&\
+   su -mm -c 'grep com.google.android.youtube /proc/mounts  | cut -d " " -f 2 | sed "s/apk.*/apk/" | xargs -r umount -l > /dev/null 2>&1; done &&\
    cp /data/data/com.termux/files/home/storage/"revanced extended apks" "youtube_patched".apk /data/local/tmp/revanced.delete &&\
    mv /data/local/tmp/revanced.delete /data/adb/revanced/"com.google.android.youtube".apk &&\
    stockapp=$(pm path com.google.android.youtube | grep base | sed "s/package://g") &&\
@@ -841,7 +841,7 @@ elif ["var" -eq 2 ]; then
     # Execute the modified command
     $command
     mkdir /sdcard/"revanced extended apks" && mv  youtube_patched.apk /sdcard/"revanced extended apks"    
-     su -mm -c 'grep com.google.android.youtube /proc/mounts | while read -r line; do echo $line | cut -d " " -f 2 | sed "s/apk.*/apk/" | xargs -r umount -l > /dev/null 2>&1; done &&\
+     su -mm -c 'grep com.google.android.youtube /proc/mounts  | cut -d " " -f 2 | sed "s/apk.*/apk/" | xargs -r umount -l > /dev/null 2>&1; done &&\
     cp /data/data/com.termux/files/home/storage/"revanced extended apks" "youtube_patched".apk /data/local/tmp/revanced.delete &&\
      mv /data/local/tmp/revanced.delete /data/adb/revanced/"com.google.android.youtube".apk &&\
      stockapp=$(pm path com.google.android.youtube | grep base | sed "s/package://g") &&\
@@ -923,7 +923,7 @@ elif ["var" -eq 2 ]; then
     # Execute the modified command
     $command
        mkdir /sdcard/"revanced extended apks" && mv  youtube_patched.apk /sdcard/"revanced extended apks"    
-       su -mm -c 'grep com.google.android.youtube /proc/mounts | while read -r line; do echo $line | cut -d " " -f 2 | sed "s/apk.*/apk/" | xargs -r umount -l > /dev/null 2>&1; done &&\
+       su -mm -c 'grep com.google.android.youtube /proc/mounts  | cut -d " " -f 2 | sed "s/apk.*/apk/" | xargs -r umount -l > /dev/null 2>&1; done &&\
        cp /data/data/com.termux/files/home/storage/"revanced extended apks" "youtube_patched".apk /data/local/tmp/revanced.delete &&\
        mv /data/local/tmp/revanced.delete /data/adb/revanced/"com.google.android.youtube".apk &&\
        stockapp=$(pm path com.google.android.youtube | grep base | sed "s/package://g") &&\
@@ -940,6 +940,105 @@ elif ["var" -eq 2 ]; then
    fi
    done 
   fi
+ elif [ "$patch" -eq 2 ]; then
+  echo "PLEASE FOR GOD SAKE, INSTALL YOUTUBE MUSIC FIRST, I'M TOO LAZY TO MAKE THIS SCRIPT DETECT IF THE APP WAS INSTALLED OR NAH"
+  sleep 5
+  echo "unable to change youtube music app name (limitation for now)"
+  echo "you have selected root variants, unable to change application package name"
+
+  # Use sed to update the options.json file
+  sed -i "s/Music_PackageName.*/Music_PackageName = \"$package_name\"/" options.toml
+  #download youtube music
+  WGET_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
+  req() {
+     wget -O "$2" --header="$WGET_HEADER" "$1"
+  }
+
+  get_latestytmversion() {
+      YTVERSION=$(su -c dumpsys package com.google.android.apps.youtube.music | grep versionName | cut -d '=' -f 2 | sed -n '1p')
+      echo "Installed Youtube Version: $YTVERSION"
+  }
+
+
+  dl_ytm() {
+    rm -rf $2
+    echo "Downloading YouTube Music $1"
+    url="https://www.apkmirror.com/apk/google-inc/youtube-music/youtube-music-${1//./-}-release/"
+    url="$url$(req "$url" - | grep arm64 -A30 | grep youtube-music | head -1 | sed "s#.*-release/##g;s#/\".*##g")"
+    url="https://www.apkmirror.com$(req "$url" - | tr '\n' ' ' | sed -n 's;.*href="\(.*key=[^"]*\)">.*;\1;p')"
+    url="https://www.apkmirror.com$(req "$url" - | tr '\n' ' ' | sed -n 's;.*href="\(.*key=[^"]*\)">.*;\1;p')"
+    req "$url" "$2"
+  }
+
+   clear
+   echo "Select an icon color:"
+   echo "1 is red"
+   echo "2 is revancify"
+   echo "3 is YouTube Original Icon"
+   # Initialize the icon variable to an empty string
+   icon=""
+
+   # Start a while loop to prompt the user for input
+   while [ -z "$icon" ] || [ "$icon" != "1" ] && [ "$icon" != "2" ] && [ "$icon" != "3" ]; do
+     # Read the value of the icon variable
+     read icon
+     
+     clear
+     download_additional_files
+     clear
+  # Get the latest version of YouTube music
+  
+      get_latestytmversion
+ 
+      # Check if the latest YouTube version was retrieved successfully
+      if [ -z "$YTMVERSION" ]; then
+          echo "Error: Unable to retrieve latest YouTube music version"
+          exit 1
+      fi
+
+      # Download the latest version of YouTube music
+       dl_ytm "$YTMVERSION" "YouTube_Music.apk"
+ 
+      # Check if the YouTube app was downloaded successfully
+      if [ ! -f "YouTube_Music.apk" ]; then
+          echo "Error: Unable to download YouTube music app"
+          exit 1
+      fi
+     clear
+     # Modify the command string based on the value of the icon variable
+     if [ -n "$icon" ]; then
+       # If the icon is not blank, modify the command string based on the value of the icon variable
+       if [ "$icon" == "1" ]; then
+         # If the icon is "red", change custom-branding-any to "red"
+         command="java -jar revanced-cli.jar -a YouTube_Music.apk -c -b revanced-patches.jar --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2 --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -m inte.apk --experimental -o youtube_music_patched.apk -i custom-branding-name -i custom-branding-icon-music-red "
+       elif [ "$icon" == "2" ]; then
+         # If the icon is "revancify", change custom-branding-any to "revancify"
+         command="java -jar revanced-cli.jar --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -a YouTube_Music.apk -c -b revanced-patches.jar -m inte.apk --experimental -o youtube_music_patched.apk -i custom-branding-name -i custom-branding-icon-revancify --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2 -e custom-branding-icon-music-red"
+        elif [ "$icon" == "3" ]; then
+         # If the icon is "revancify", change custom-branding-any to "og"
+         command="java -jar revanced-cli.jar -a YouTube_Music.apk -c -b revanced-patches.jar -m inte.apk --experimental --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -o youtube_music_patched.apk -i custom-branding-name -e custom-branding-icon-revancify -e custom-branding-icon-afn-blue -e custom-branding-icon-afn-red --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2"
+       else
+           # If the icon is something else, print an error message and set the icon variable to an empty string
+           echo "Invalid icon color. Please try again."
+           icon=""
+     fi
+
+   # Execute the modified command
+   $command
+   mkdir /sdcard/"revanced extended apks" && mv  youtube_music_patched.apk /sdcard/"revanced extended apks"    
+   su -mm -c 'grep com.google.android.apps.youtube.music /proc/mounts  | cut -d " " -f 2 | sed "s/apk.*/apk/" | xargs -r umount -l > /dev/null 2>&1; done &&\
+   cp /data/data/com.termux/files/home/storage/"revanced extended apks" "youtube_music_patched".apk /data/local/tmp/revanced.delete &&\
+   mv /data/local/tmp/revanced.delete /data/adb/revanced/"com.google.android.apps.youtube.music".apk &&\
+   stockapp=$(pm path com.google.android.apps.youtube.music | grep base | sed "s/package://g") &&\
+   revancedapp=/data/adb/revanced/"com.google.android.apps.youtube.music".apk &&\
+   chmod 644 "$revancedapp" &&\
+   chown system:system "$revancedapp" &&\
+   chcon u:object_r:apk_data_file:s0 "$revancedapp" &&\
+   mount -o bind "$revancedapp" "$stockapp" &&\
+   am force-stop com.google.android.apps.youtube.music' 2>&1 .mountlog
+   fi
+  done
+fi
 cd || exit
 rm -r -d rvxtemp
 
