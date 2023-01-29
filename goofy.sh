@@ -959,7 +959,7 @@ elif [ "$var" -eq 2 ]; then
   }
 
   get_latestytmversion() {
-      YTM VERSION=$(su -c dumpsys package com.google.android.apps.youtube.music | grep versionName | cut -d '=' -f 2 | sed -n '1p')
+      YTMVERSION=$(su -c dumpsys package com.google.android.apps.youtube.music | grep versionName | cut -d '=' -f 2 | sed -n '1p')
       echo "Installed Youtube Music Version: $YTMVERSION"
   }
 
