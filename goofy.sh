@@ -43,7 +43,7 @@ echo 'darkThemeBackgroundColor = "@android:color/black"' >> options.toml
 
 clear
 echo "select variants"
-echo "1 is non root (recommand)"
+echo "1 is non root (recommend)"
 echo "2 is root"
 read var
 if [ "$var" -eq 1 ]; then
