@@ -71,7 +71,7 @@ if [ "$var" -eq 1 ]; then
  aria2c -x 8 -s 8 -k 1M -o revanced-cli.jar $FILE_URL2
  aria2c -x 8 -s 8 -k 1M -o revanced-patches.jar $FILE_URL1
  aria2c -x 8 -s 8 -k 1M -o aapt2 https://github.com/HoriKyoukosimp/goofyahh/releases/download/aapt2/aapt2
- aria2c -x 8 -s 8 -k 1M -o /data/data/com.termux/files/home/.keystore/revanced.keystore https://raw.githubusercontent.com/decipher3114/Revancify/main/revanced.keystore -nc
+ aria2c -x 8 -s 8 -k 1M -o /data/data/com.termux/files/home/.keystore/revanced.keystore https://raw.githubusercontent.com/decipher3114/Revancify/main/revanced.keystore --allow-overwrite=false
 
   }
 
@@ -594,11 +594,11 @@ elif [ "$var" -eq 2 ]; then
 
  echo "downloading required files for patching (around 60mb), it will automatically removed after finished patching"
  # Download the files
- curl -L $FILE_URL3 -o inte.apk 
- curl -L $FILE_URL2 -o revanced-cli.jar 
- curl -L $FILE_URL1 -o revanced-patches.jar 
- curl -OL https://github.com/HoriKyoukosimp/goofyahh/releases/download/aapt2/aapt2 
- wget https://raw.githubusercontent.com/decipher3114/Revancify/main/revanced.keystore -P /data/data/com.termux/files/home/.keystore -nc 
+ aria2c -x 8 -s 8 -k 1M -o inte.apk $FILE_URL3
+ aria2c -x 8 -s 8 -k 1M -o revanced-cli.jar $FILE_URL2
+ aria2c -x 8 -s 8 -k 1M -o revanced-patches.jar $FILE_URL1
+ aria2c -x 8 -s 8 -k 1M -o aapt2 https://github.com/HoriKyoukosimp/goofyahh/releases/download/aapt2/aapt2
+ aria2c -x 8 -s 8 -k 1M -o /data/data/com.termux/files/home/.keystore/revanced.keystore https://raw.githubusercontent.com/decipher3114/Revancify/main/revanced.keystore --allow-overwrite=false
   }
  if [ "$patch" -eq 1 ]; then
   # Prompt the user to enter the new values
