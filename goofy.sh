@@ -953,11 +953,10 @@ elif [ "$var" -eq 2 ]; then
   # Use sed to update the options.json file
   sed -i "s/Music_PackageName.*/Music_PackageName = \"$package_name\"/" options.toml
   #download youtube music
-  WGET_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
-  req() {
-     wget -O "$2" --header="$WGET_HEADER" "$1"
-  }
-
+   ARIA2_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:110.0) Gecko/20100101 Firefox/110.0"
+   req() {
+       aria2c -o "$2" --user-agent="$ARIA2_HEADER" "$1"
+   }
   get_latestytmversion() {
       YTMVERSION=$(su -c dumpsys package com.google.android.apps.youtube.music | grep versionName | cut -d '=' -f 2 | sed -n '1p')
       echo "Installed Youtube Music Version: $YTMVERSION"
