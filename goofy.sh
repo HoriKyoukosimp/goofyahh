@@ -68,11 +68,11 @@ if [ "$var" -eq 1 ]; then
 
  echo "downloading required files for patching (around 60mb), it will automatically removed after finished patching"
  # Download the files
- curl -L $FILE_URL3 -o inte.apk -s
- curl -L $FILE_URL2 -o revanced-cli.jar -s
- curl -L $FILE_URL1 -o revanced-patches.jar -s
- curl -OL https://github.com/HoriKyoukosimp/goofyahh/releases/download/aapt2/aapt2 -s
- wget https://raw.githubusercontent.com/decipher3114/Revancify/main/revanced.keystore -P /data/data/com.termux/files/home/.keystore -nc -q
+ curl -L $FILE_URL3 -o inte.apk 
+ curl -L $FILE_URL2 -o revanced-cli.jar 
+ curl -L $FILE_URL1 -o revanced-patches.jar 
+ curl -OL https://github.com/HoriKyoukosimp/goofyahh/releases/download/aapt2/aapt2 
+ wget https://raw.githubusercontent.com/decipher3114/Revancify/main/revanced.keystore -P /data/data/com.termux/files/home/.keystore -nc 
   }
 
  if [ "$patch" -eq 1 ]; then
@@ -123,7 +123,7 @@ if [ "$var" -eq 1 ]; then
    }
 
    get_latestytversion() {
-      curl -L $PATCH_JSON -o patches.json -s
+      curl -L $PATCH_JSON -o patches.json 
      YTVERSION=$(jq -r '.[] | select(.compatiblePackages[].name == "com.google.android.youtube") | .compatiblePackages[].versions | .[]' patches.json | sort -n | tail -1)
       echo "Latest Youtube Version: $YTVERSION"
  }
@@ -556,7 +556,7 @@ elif [ "$var" -eq 2 ]; then
    }
 
    get_latestytversion() {
-      curl -L $PATCH_JSON -o patches.json -s
+      curl -L $PATCH_JSON -o patches.json 
      YTVERSION=$(jq -r '.[] | select(.compatiblePackages[].name == "com.google.android.youtube") | .compatiblePackages[].versions | .[]' patches.json | sort -n | tail -1)
       echo "Latest Youtube Version: $YTVERSION"
  }
@@ -591,11 +591,11 @@ elif [ "$var" -eq 2 ]; then
 
  echo "downloading required files for patching (around 60mb), it will automatically removed after finished patching"
  # Download the files
- curl -L $FILE_URL3 -o inte.apk -s
- curl -L $FILE_URL2 -o revanced-cli.jar -s
- curl -L $FILE_URL1 -o revanced-patches.jar -s
- curl -OL https://github.com/HoriKyoukosimp/goofyahh/releases/download/aapt2/aapt2 -s
- wget https://raw.githubusercontent.com/decipher3114/Revancify/main/revanced.keystore -P /data/data/com.termux/files/home/.keystore -nc -q
+ curl -L $FILE_URL3 -o inte.apk 
+ curl -L $FILE_URL2 -o revanced-cli.jar 
+ curl -L $FILE_URL1 -o revanced-patches.jar 
+ curl -OL https://github.com/HoriKyoukosimp/goofyahh/releases/download/aapt2/aapt2 
+ wget https://raw.githubusercontent.com/decipher3114/Revancify/main/revanced.keystore -P /data/data/com.termux/files/home/.keystore -nc 
   }
  if [ "$patch" -eq 1 ]; then
   # Prompt the user to enter the new values
@@ -942,9 +942,10 @@ elif [ "$var" -eq 2 ]; then
   fi
  elif [ "$patch" -eq 2 ]; then
   echo "PLEASE FOR GOD SAKE, INSTALL YOUTUBE MUSIC FIRST, I'M TOO LAZY TO MAKE THIS SCRIPT DETECT IF THE APP WAS INSTALLED OR NAH"
-  sleep 5
+  sleep 2
   echo "unable to change youtube music app name (limitation for now)"
   echo "you have selected root variants, unable to change application package name"
+  sleep 2
 
   # Use sed to update the options.json file
   sed -i "s/Music_PackageName.*/Music_PackageName = \"$package_name\"/" options.toml
