@@ -526,10 +526,6 @@ if [ "$var" -eq 1 ]; then
    mkdir /sdcard/"revanced extended apks" && mv  youtube_music_patched.apk /sdcard/"revanced extended apks" && termux-open /sdcard/"revanced extended apks"/youtube_music_patched.apk
    fi
   done
- else
-  echo "Invalid input. Exiting the script..."
-  exit 1
-  fi
 elif [ "$var" -eq 2 ]; then
    WGET_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
 
@@ -1046,6 +1042,10 @@ elif [ "$var" -eq 2 ]; then
    am force-stop com.google.android.apps.youtube.music' 2>&1 .mountlog
    fi
   done
+ else
+ echo "Invalid input. Exiting the script..."
+ exit 1
+ fi
 fi
 cd || exit
 rm -r -d rvxtemp
