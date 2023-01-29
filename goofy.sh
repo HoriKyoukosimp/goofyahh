@@ -216,7 +216,7 @@ if [ "$var" -eq 1 ]; then
    $command
    mkdir /sdcard/"revanced extended apks" && mv  youtube_patched.apk /sdcard/"revanced extended apks" && termux-open /sdcard/"revanced extended apks"/youtube_patched.apk
    fi
-   done
+  done
    
   elif [ "$numbers" -eq 2 ]; then
   clear
@@ -287,7 +287,7 @@ if [ "$var" -eq 1 ]; then
      echo "Invalid option. Exiting script."
      exit 1
    fi 
-   done
+  done
    
   elif [ "$numbers" -eq 3 ]; then
   clear
@@ -357,7 +357,7 @@ if [ "$var" -eq 1 ]; then
      echo "Invalid option. Exiting script."
      exit 1
    fi
-   done 
+  done 
 
    elif [ "$numbers" -eq 4 ]; then
    clear
@@ -384,7 +384,7 @@ if [ "$var" -eq 1 ]; then
      # Get the latest version of YouTube
        get_latestytversion
 
-  # Check if the latest YouTube version was retrieved successfully
+   # Check if the latest YouTube version was retrieved successfully
       if [ -z "$YTVERSION" ]; then
           echo "Error: Unable to retrieve latest YouTube version"
           exit 1
@@ -399,7 +399,7 @@ if [ "$var" -eq 1 ]; then
           exit 1
         fi
       
-  clear
+   clear
 
      # Modify the command string based on the value of the icon variable
      if [ -n "$icon" ]; then
@@ -429,7 +429,7 @@ if [ "$var" -eq 1 ]; then
      echo "Invalid option. Exiting script."
      exit 1
    fi
-   done 
+  done 
  fi
  elif [ "$patch" -eq 2 ]; then
 
