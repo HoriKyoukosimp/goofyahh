@@ -17,10 +17,9 @@ sleep 1
 rm -r -d rvxtemp
 rm -r -d /sdcard/"revanced extended apks"
 pkg update
-termux-setup-storage
 pkg i openjdk-17 -y
-pkg i wget -y
 pkg i jq -y
+pkg i aria2 -y
 mkdir rvxtemp
 mkdir .keystore
 cd rvxtemp
@@ -68,11 +67,12 @@ if [ "$var" -eq 1 ]; then
 
  echo "downloading required files for patching (around 60mb), it will automatically removed after finished patching"
  # Download the files
- curl -L $FILE_URL3 -o inte.apk 
- curl -L $FILE_URL2 -o revanced-cli.jar 
- curl -L $FILE_URL1 -o revanced-patches.jar 
- curl -OL https://github.com/HoriKyoukosimp/goofyahh/releases/download/aapt2/aapt2 
- wget https://raw.githubusercontent.com/decipher3114/Revancify/main/revanced.keystore -P /data/data/com.termux/files/home/.keystore -nc 
+ aria2c -x 8 -s 8 -k 1M -o inte.apk $FILE_URL3
+ aria2c -x 8 -s 8 -k 1M -o revanced-cli.jar $FILE_URL2
+ aria2c -x 8 -s 8 -k 1M -o revanced-patches.jar $FILE_URL1
+ aria2c -x 8 -s 8 -k 1M -o aapt2 https://github.com/HoriKyoukosimp/goofyahh/releases/download/aapt2/aapt2
+ aria2c -x 8 -s 8 -k 1M -o /data/data/com.termux/files/home/.keystore/revanced.keystore https://raw.githubusercontent.com/decipher3114/Revancify/main/revanced.keystore -nc
+
   }
 
  if [ "$patch" -eq 1 ]; then
@@ -93,11 +93,11 @@ if [ "$var" -eq 1 ]; then
  echo "2 is latest supported version by rvx"
  read ytver
   if [ "$ytver" -eq 1 ]; then
-  WGET_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
+   ARIA2_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:110.0) Gecko/20100101 Firefox/110.0"
 
-  #download youtube
+   # download youtube
    req() {
-     wget -O "$2" --header="$WGET_HEADER" "$1"
+       aria2c -o "$2" --user-agent="$ARIA2_HEADER" "$1"
    }
 
   get_latestytversion() {
@@ -116,10 +116,11 @@ if [ "$var" -eq 1 ]; then
       req "$url" "$2"
   }
   elif [ "$ytver" -eq 2 ]; then
-   WGET_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
-  
+   ARIA2_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:110.0) Gecko/20100101 Firefox/110.0"
+
+   # download youtube
    req() {
-     wget -O "$2" --header="$WGET_HEADER" "$1"
+       aria2c -o "$2" --user-agent="$ARIA2_HEADER" "$1"
    }
 
    get_latestytversion() {
@@ -439,12 +440,13 @@ if [ "$var" -eq 1 ]; then
 
   # Use sed to update the options.json file
   sed -i "s/Music_PackageName.*/Music_PackageName = \"$package_name\"/" options.toml
+  
   #download youtube music
-  WGET_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
-  req() {
-     wget -O "$2" --header="$WGET_HEADER" "$1"
-  }
+   ARIA2_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:110.0) Gecko/20100101 Firefox/110.0"
 
+   req() {
+       aria2c -o "$2" --user-agent="$ARIA2_HEADER" "$1"
+   }
   get_latestytmversion() {
     url="https://www.apkmirror.com/apk/google-inc/youtube-music/"
     YTMVERSION=$(req "$url" - | grep "All version" -A200 | grep app_release | sed 's:.*/youtube-music-::g;s:-release/.*::g;s:-:.:g' | sort -r | head -1)
@@ -527,12 +529,12 @@ if [ "$var" -eq 1 ]; then
   exit 1
   fi
 elif [ "$var" -eq 2 ]; then
- WGET_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
+  ARIA2_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:110.0) Gecko/20100101 Firefox/110.0"
 
-  #download youtube
-   req() {
-     wget -O "$2" --header="$WGET_HEADER" "$1"
-   }
+  # download youtube
+  req() {
+      aria2c -o "$2" --user-agent="$ARIA2_HEADER" "$1"
+  }
 
   get_latestytversion() {
       YTVERSION=$(su -c dumpsys package com.google.android.youtube | grep versionName | cut -d '=' -f 2 | sed -n '1p')
@@ -549,10 +551,11 @@ elif [ "$var" -eq 2 ]; then
       req "$url" "$2"
   }
   elif [ "$ytver" -eq 2 ]; then
-   WGET_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
-  
+   ARIA2_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:110.0) Gecko/20100101 Firefox/110.0"
+
+   # download youtube
    req() {
-     wget -O "$2" --header="$WGET_HEADER" "$1"
+       aria2c -o "$2" --user-agent="$ARIA2_HEADER" "$1"
    }
 
    get_latestytversion() {
