@@ -23,7 +23,7 @@ pkg i wget -y
 pkg i aria2 -y
 mkdir rvxtemp
 mkdir .keystore
-cd rvxtemp
+cd rvxtemp || exit
 
 clear
 
@@ -68,9 +68,9 @@ if [ "$var" -eq 1 ]; then
 
  echo "downloading required files for patching (around 60mb), it will automatically removed after finished patching"
  # Download the files
- aria2c -x 8 -s 8 -k 1M -o inte.apk $FILE_URL3
- aria2c -x 8 -s 8 -k 1M -o revanced-cli.jar $FILE_URL2
- aria2c -x 8 -s 8 -k 1M -o revanced-patches.jar $FILE_URL1
+ aria2c -x 8 -s 8 -k 1M -o inte.apk "$FILE_URL3"
+ aria2c -x 8 -s 8 -k 1M -o revanced-cli.jar "$FILE_URL2"
+ aria2c -x 8 -s 8 -k 1M -o revanced-patches.jar "$FILE_URL1"
  aria2c -x 8 -s 8 -k 1M -o aapt2 https://github.com/HoriKyoukosimp/goofyahh/releases/download/aapt2/aapt2
  aria2c -x 8 -s 8 -k 1M -o /data/data/com.termux/files/home/.keystore/revanced.keystore https://raw.githubusercontent.com/decipher3114/Revancify/main/revanced.keystore --allow-overwrite=false
 
@@ -108,7 +108,7 @@ if [ "$var" -eq 1 ]; then
  }
 
    dl_yt() {
-      rm -rf $2
+      rm -rf "$2"
       echo "Downloading YouTube $1"
       url="https://www.apkmirror.com/apk/google-inc/youtube/youtube-${1//./-}-release/"
       url="$url$(req "$url" - | grep Variant -A50 | grep ">APK<" -A2 | grep android-apk-download | sed "s#.*-release/##g;s#/\#.*##g")"
@@ -125,13 +125,13 @@ if [ "$var" -eq 1 ]; then
     }
 
    get_latestytversion() {
-      curl -L $PATCH_JSON -o patches.json 
+      curl -L "$PATCH_JSON" -o patches.json 
      YTVERSION=$(jq -r '.[] | select(.compatiblePackages[].name == "com.google.android.youtube") | .compatiblePackages[].versions | .[]' patches.json | sort -n | tail -1)
       echo "Latest Youtube Version: $YTVERSION"
  }
 
    dl_yt() {
-      rm -rf $2
+      rm -rf "$2"
       echo "Downloading YouTube $1"
       url="https://www.apkmirror.com/apk/google-inc/youtube/youtube-${1//./-}-release/"
       url="$url$(req "$url" - | grep Variant -A50 | grep ">APK<" -A2 | grep android-apk-download | sed "s#.*-release/##g;s#/\#.*##g")"
@@ -457,7 +457,7 @@ if [ "$var" -eq 1 ]; then
 
 
   dl_ytm() {
-    rm -rf $2
+    rm -rf "$2"
     echo "Downloading YouTube Music $1"
     url="https://www.apkmirror.com/apk/google-inc/youtube-music/youtube-music-${1//./-}-release/"
     url="$url$(req "$url" - | grep arm64 -A30 | grep youtube-music | head -1 | sed "s#.*-release/##g;s#/\".*##g")"
@@ -526,6 +526,11 @@ if [ "$var" -eq 1 ]; then
    mkdir /sdcard/"revanced extended apks" && mv  youtube_music_patched.apk /sdcard/"revanced extended apks" && termux-open /sdcard/"revanced extended apks"/youtube_music_patched.apk
    fi
   done
+ else
+  echo "Invalid input. Exiting the script..."
+  exit 1
+  fi
+
 elif [ "$var" -eq 2 ]; then
    WGET_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
 
@@ -540,7 +545,7 @@ elif [ "$var" -eq 2 ]; then
  }
 
    dl_yt() {
-      rm -rf $2
+      rm -rf "$2"
       echo "Downloading YouTube $1"
       url="https://www.apkmirror.com/apk/google-inc/youtube/youtube-${1//./-}-release/"
       url="$url$(req "$url" - | grep Variant -A50 | grep ">APK<" -A2 | grep android-apk-download | sed "s#.*-release/##g;s#/\#.*##g")"
@@ -558,13 +563,13 @@ elif [ "$var" -eq 2 ]; then
     }
 
    get_latestytversion() {
-      curl -L $PATCH_JSON -o patches.json 
+      curl -L "$PATCH_JSON" -o patches.json 
      YTVERSION=$(jq -r '.[] | select(.compatiblePackages[].name == "com.google.android.youtube") | .compatiblePackages[].versions | .[]' patches.json | sort -n | tail -1)
       echo "Latest Youtube Version: $YTVERSION"
  }
 
    dl_yt() {
-      rm -rf $2
+      rm -rf "$2"
       echo "Downloading YouTube $1"
       url="https://www.apkmirror.com/apk/google-inc/youtube/youtube-${1//./-}-release/"
       url="$url$(req "$url" - | grep Variant -A50 | grep ">APK<" -A2 | grep android-apk-download | sed "s#.*-release/##g;s#/\#.*##g")"
@@ -593,9 +598,9 @@ elif [ "$var" -eq 2 ]; then
 
  echo "downloading required files for patching (around 60mb), it will automatically removed after finished patching"
  # Download the files
- aria2c -x 8 -s 8 -k 1M -o inte.apk $FILE_URL3
- aria2c -x 8 -s 8 -k 1M -o revanced-cli.jar $FILE_URL2
- aria2c -x 8 -s 8 -k 1M -o revanced-patches.jar $FILE_URL1
+ aria2c -x 8 -s 8 -k 1M -o inte.apk "$FILE_URL3"
+ aria2c -x 8 -s 8 -k 1M -o revanced-cli.jar "$FILE_URL2"
+ aria2c -x 8 -s 8 -k 1M -o revanced-patches.jar "$FILE_URL1"
  aria2c -x 8 -s 8 -k 1M -o aapt2 https://github.com/HoriKyoukosimp/goofyahh/releases/download/aapt2/aapt2
  aria2c -x 8 -s 8 -k 1M -o /data/data/com.termux/files/home/.keystore/revanced.keystore https://raw.githubusercontent.com/decipher3114/Revancify/main/revanced.keystore --allow-overwrite=false
   }
@@ -965,7 +970,7 @@ elif [ "$var" -eq 2 ]; then
 
 
   dl_ytm() {
-    rm -rf $2
+    rm -rf "$2"
     echo "Downloading YouTube Music $1"
     url="https://www.apkmirror.com/apk/google-inc/youtube-music/youtube-music-${1//./-}-release/"
     url="$url$(req "$url" - | grep arm64 -A30 | grep youtube-music | head -1 | sed "s#.*-release/##g;s#/\".*##g")"
@@ -1042,10 +1047,6 @@ elif [ "$var" -eq 2 ]; then
    am force-stop com.google.android.apps.youtube.music' 2>&1 .mountlog
    fi
   done
- else
- echo "Invalid input. Exiting the script..."
- exit 1
- fi
 fi
 cd || exit
 rm -r -d rvxtemp
