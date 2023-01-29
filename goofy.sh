@@ -1,4 +1,4 @@
-echo "welcome to auto build scripts made by @zutto_mayonaka_de_linoni on telegram"
+echo "welcome to auto build scripts made by @fame_iplaytouhou on telegram"
 echo "well this script isnt that good compared to revanced manager, revanced builder or revancify"
 echo "this script is recommend for someone having issue using those builder"
 echo "so have fun!"
@@ -530,7 +530,7 @@ if [ "$var" -eq 1 ]; then
   echo "Invalid input. Exiting the script..."
   exit 1
   fi
-
+exit 0
 elif [ "$var" -eq 2 ]; then
    WGET_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
 
@@ -1047,6 +1047,7 @@ elif [ "$var" -eq 2 ]; then
    am force-stop com.google.android.apps.youtube.music' 2>&1 .mountlog
    fi
   done
+exit 0
 fi
 cd || exit
 rm -r -d rvxtemp
