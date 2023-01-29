@@ -19,6 +19,7 @@ rm -r -d /sdcard/"revanced extended apks"
 pkg update
 pkg i openjdk-17 -y
 pkg i jq -y
+pkg i wget -y
 pkg i aria2 -y
 mkdir rvxtemp
 mkdir .keystore
@@ -93,12 +94,12 @@ if [ "$var" -eq 1 ]; then
  echo "2 is latest supported version by rvx"
  read ytver
   if [ "$ytver" -eq 1 ]; then
-   ARIA2_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:110.0) Gecko/20100101 Firefox/110.0"
+   WGET_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
 
-   # download youtube
-   req() {
-       aria2c -o "$2" --user-agent="$ARIA2_HEADER" "$1"
-   }
+   #download youtube
+    req() {
+      wget -O "$2" --header="$WGET_HEADER" "$1"
+    }
 
   get_latestytversion() {
        url="https://www.apkmirror.com/apk/google-inc/youtube/"
@@ -116,12 +117,12 @@ if [ "$var" -eq 1 ]; then
       req "$url" "$2"
   }
   elif [ "$ytver" -eq 2 ]; then
-   ARIA2_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:110.0) Gecko/20100101 Firefox/110.0"
+   WGET_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
 
-   # download youtube
-   req() {
-       aria2c -o "$2" --user-agent="$ARIA2_HEADER" "$1"
-   }
+   #download youtube
+    req() {
+      wget -O "$2" --header="$WGET_HEADER" "$1"
+    }
 
    get_latestytversion() {
       curl -L $PATCH_JSON -o patches.json 
@@ -442,11 +443,12 @@ if [ "$var" -eq 1 ]; then
   sed -i "s/Music_PackageName.*/Music_PackageName = \"$package_name\"/" options.toml
   
   #download youtube music
-   ARIA2_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:110.0) Gecko/20100101 Firefox/110.0"
+   WGET_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
 
-   req() {
-       aria2c -o "$2" --user-agent="$ARIA2_HEADER" "$1"
-   }
+   #download youtube
+    req() {
+      wget -O "$2" --header="$WGET_HEADER" "$1"
+    }
   get_latestytmversion() {
     url="https://www.apkmirror.com/apk/google-inc/youtube-music/"
     YTMVERSION=$(req "$url" - | grep "All version" -A200 | grep app_release | sed 's:.*/youtube-music-::g;s:-release/.*::g;s:-:.:g' | sort -r | head -1)
@@ -529,12 +531,12 @@ if [ "$var" -eq 1 ]; then
   exit 1
   fi
 elif [ "$var" -eq 2 ]; then
-  ARIA2_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:110.0) Gecko/20100101 Firefox/110.0"
+   WGET_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
 
-  # download youtube
-  req() {
-      aria2c -o "$2" --user-agent="$ARIA2_HEADER" "$1"
-  }
+   #download youtube
+    req() {
+      wget -O "$2" --header="$WGET_HEADER" "$1"
+    }
 
   get_latestytversion() {
       YTVERSION=$(su -c dumpsys package com.google.android.youtube | grep versionName | cut -d '=' -f 2 | sed -n '1p')
@@ -551,12 +553,13 @@ elif [ "$var" -eq 2 ]; then
       req "$url" "$2"
   }
   elif [ "$ytver" -eq 2 ]; then
-   ARIA2_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:110.0) Gecko/20100101 Firefox/110.0"
 
-   # download youtube
-   req() {
-       aria2c -o "$2" --user-agent="$ARIA2_HEADER" "$1"
-   }
+   WGET_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
+
+   #download youtube
+    req() {
+      wget -O "$2" --header="$WGET_HEADER" "$1"
+    }
 
    get_latestytversion() {
       curl -L $PATCH_JSON -o patches.json 
@@ -953,10 +956,12 @@ elif [ "$var" -eq 2 ]; then
   # Use sed to update the options.json file
   sed -i "s/Music_PackageName.*/Music_PackageName = \"$package_name\"/" options.toml
   #download youtube music
-   ARIA2_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:110.0) Gecko/20100101 Firefox/110.0"
-   req() {
-       aria2c -o "$2" --user-agent="$ARIA2_HEADER" "$1"
-   }
+   WGET_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
+
+   #download youtube
+    req() {
+      wget -O "$2" --header="$WGET_HEADER" "$1"
+    }
   get_latestytmversion() {
       YTMVERSION=$(su -c dumpsys package com.google.android.apps.youtube.music | grep versionName | cut -d '=' -f 2 | sed -n '1p')
       echo "Installed Youtube Music Version: $YTMVERSION"
