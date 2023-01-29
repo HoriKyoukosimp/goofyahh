@@ -215,6 +215,12 @@ if [ "$var" -eq 1 ]; then
    # Execute the modified command
    $command
    mkdir /sdcard/"revanced extended apks" && mv  youtube_patched.apk /sdcard/"revanced extended apks" && termux-open /sdcard/"revanced extended apks"/youtube_patched.apk
+   cd || exit
+    rm -r -d rvxtemp
+
+    clear
+    echo "thanks for using my script! hope you have fun with revanced extended!"
+    echo "if for whatever reason the package installer didnt pop up, u can go to your file manager app, u will see folder named "revanced extended apks" install the apk from there"
    fi
   done
    
@@ -282,6 +288,12 @@ if [ "$var" -eq 1 ]; then
    # Execute the modified command
    $command
    mkdir /sdcard/"revanced extended apks" && mv  youtube_patched.apk /sdcard/"revanced extended apks" && termux-open /sdcard/"revanced extended apks"/youtube_patched.apk
+   cd || exit
+    rm -r -d rvxtemp
+
+    clear
+    echo "thanks for using my script! hope you have fun with revanced extended!"
+    echo "if for whatever reason the package installer didnt pop up, u can go to your file manager app, u will see folder named "revanced extended apks" install the apk from there"
     else
      # If the user enters an invalid option, print an error message and exit the script
      echo "Invalid option. Exiting script."
@@ -352,6 +364,12 @@ if [ "$var" -eq 1 ]; then
     # Execute the modified command
     $command
     mkdir /sdcard/"revanced extended apks" && mv  youtube_patched.apk /sdcard/"revanced extended apks" && termux-open /sdcard/"revanced extended apks"/youtube_patched.apk
+    cd || exit
+    rm -r -d rvxtemp
+
+    clear
+    echo "thanks for using my script! hope you have fun with revanced extended!"
+    echo "if for whatever reason the package installer didnt pop up, u can go to your file manager app, u will see folder named "revanced extended apks" install the apk from there"
      else
      # If the user enters an invalid option, print an error message and exit the script
      echo "Invalid option. Exiting script."
@@ -424,6 +442,12 @@ if [ "$var" -eq 1 ]; then
     # Execute the modified command
     $command
     mkdir /sdcard/"revanced extended apks" && mv  youtube_patched.apk /sdcard/"revanced extended apks" && termux-open /sdcard/"revanced extended apks"/youtube_patched.apk
+    cd || exit
+    rm -r -d rvxtemp
+
+    clear
+    echo "thanks for using my script! hope you have fun with revanced extended!"
+    echo "if for whatever reason the package installer didnt pop up, u can go to your file manager app, u will see folder named "revanced extended apks" install the apk from there"
      else
      # If the user enters an invalid option, print an error message and exit the script
      echo "Invalid option. Exiting script."
@@ -524,6 +548,12 @@ if [ "$var" -eq 1 ]; then
    # Execute the modified command
    $command
    mkdir /sdcard/"revanced extended apks" && mv  youtube_music_patched.apk /sdcard/"revanced extended apks" && termux-open /sdcard/"revanced extended apks"/youtube_music_patched.apk
+    cd || exit
+    rm -r -d rvxtemp
+
+    clear
+    echo "thanks for using my script! hope you have fun with revanced extended!"
+    echo "if for whatever reason the package installer didnt pop up, u can go to your file manager app, u will see folder named "revanced extended apks" install the apk from there"
    fi
   done
  else
@@ -701,6 +731,7 @@ elif [ "$var" -eq 2 ]; then
    chcon u:object_r:apk_data_file:s0 "$revancedapp" &&\
    mount -o bind "$revancedapp" "$stockapp" &&\
    am force-stop com.google.android.youtube' 2>&1 .mountlog
+   echo revanced extended should me mounted by now
    fi
    done
    
@@ -778,6 +809,7 @@ elif [ "$var" -eq 2 ]; then
    chcon u:object_r:apk_data_file:s0 "$revancedapp" &&\
    mount -o bind "$revancedapp" "$stockapp" &&\
    am force-stop com.google.android.youtube' 2>&1 .mountlog
+   echo revanced extended should be mounted by now
     else
      # If the user enters an invalid option, print an error message and exit the script
      echo "Invalid option. Exiting script."
@@ -858,6 +890,7 @@ elif [ "$var" -eq 2 ]; then
      chcon u:object_r:apk_data_file:s0 "$revancedapp" &&\
      mount -o bind "$revancedapp" "$stockapp" &&\
      am force-stop com.google.android.youtube' 2>&1 .mountlog
+     echo revanced extended should be mounted by now
      else
      # If the user enters an invalid option, print an error message and exit the script
      echo "Invalid option. Exiting script."
@@ -940,6 +973,7 @@ elif [ "$var" -eq 2 ]; then
        chcon u:object_r:apk_data_file:s0 "$revancedapp" &&\
        mount -o bind "$revancedapp" "$stockapp" &&\
        am force-stop com.google.android.youtube' 2>&1 .mountlog
+       echo revanced should be mounted by now
      else
      # If the user enters an invalid option, print an error message and exit the script
      echo "Invalid option. Exiting script."
@@ -1045,13 +1079,8 @@ elif [ "$var" -eq 2 ]; then
    chcon u:object_r:apk_data_file:s0 "$revancedapp" &&\
    mount -o bind "$revancedapp" "$stockapp" &&\
    am force-stop com.google.android.apps.youtube.music' 2>&1 .mountlog
+   echo revanced extended should be mounted by now
    fi
   done
 exit 0
 fi
-cd || exit
-rm -r -d rvxtemp
-
-clear
-echo "thanks for using my script! hope you have fun with revanced extended!"
-echo "if for whatever reason the package installer didnt pop up, u can go to your file manager app, u will see folder named "revanced extended apks" install the apk from there"
