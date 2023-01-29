@@ -450,7 +450,7 @@ if [ "$var" -eq 1 ]; then
   get_latestytmversion() {
     url="https://www.apkmirror.com/apk/google-inc/youtube-music/"
     YTMVERSION=$(req "$url" - | grep "All version" -A200 | grep app_release | sed 's:.*/youtube-music-::g;s:-release/.*::g;s:-:.:g' | sort -r | head -1)
-    echo "Latest YoutubeMusic Version: $YTMVERSION"
+    echo "Latest Youtube Music Version: $YTMVERSION"
   }
 
 
@@ -959,7 +959,7 @@ elif [ "$var" -eq 2 ]; then
   }
 
   get_latestytmversion() {
-      YTVERSION=$(su -c dumpsys package com.google.android.apps.youtube.music | grep versionName | cut -d '=' -f 2 | sed -n '1p')
+      YTM VERSION=$(su -c dumpsys package com.google.android.apps.youtube.music | grep versionName | cut -d '=' -f 2 | sed -n '1p')
       echo "Installed Youtube Music Version: $YTMVERSION"
   }
 
