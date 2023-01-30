@@ -493,8 +493,9 @@ if [ "$var" -eq 1 ]; then
    clear
    echo "Select an icon color:"
    echo "1 is red"
-   echo "2 is revancify"
-   echo "3 is YouTube Original Icon"
+   echo "2 is blue"
+   echo "3 is revancify"
+   echo "4 is YouTube Original Icon"
    # Initialize the icon variable to an empty string
    icon=""
    
@@ -532,13 +533,16 @@ if [ "$var" -eq 1 ]; then
        # If the icon is not blank, modify the command string based on the value of the icon variable
        if [ "$icon" == "1" ]; then
          # If the icon is "red", change custom-branding-any to "red"
-         command="java -jar revanced-cli.jar -a YouTube_Music.apk -c -b revanced-patches.jar --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2 --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -m inte.apk --experimental -o youtube_music_patched.apk -i custom-branding-name -i custom-branding-icon-music-red "
+         command="java -jar revanced-cli.jar -a YouTube_Music.apk -c -b revanced-patches.jar --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2 --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -m inte.apk --experimental -o youtube_music_patched.apk -i custom-branding-name -i custom-branding-music-afn-red -e custom-branding-music-revancify -e custom-branding-music-afn-blue"
        elif [ "$icon" == "2" ]; then
          # If the icon is "revancify", change custom-branding-any to "revancify"
-         command="java -jar revanced-cli.jar --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -a YouTube_Music.apk -c -b revanced-patches.jar -m inte.apk --experimental -o youtube_music_patched.apk -i custom-branding-name -i custom-branding-icon-revancify --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2 -e custom-branding-icon-music-red"
+         command="java -jar revanced-cli.jar --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -a YouTube_Music.apk -c -b revanced-patches.jar -m inte.apk --experimental -o youtube_music_patched.apk -i custom-branding-name -i custom-branding-music-afn-blue --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2 -e custom-branding-music-red -e custom-branding-music-revancify"
         elif [ "$icon" == "3" ]; then
-         # If the icon is "revancify", change custom-branding-any to "og"
-         command="java -jar revanced-cli.jar -a YouTube_Music.apk -c -b revanced-patches.jar -m inte.apk --experimental --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -o youtube_music_patched.apk -i custom-branding-name -e custom-branding-icon-revancify -e custom-branding-icon-afn-blue -e custom-branding-icon-afn-red --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2"
+         # If the icon is "revancify", change custom-branding-any to "revancify"
+         command="java -jar revanced-cli.jar --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -a YouTube_Music.apk -c -b revanced-patches.jar -m inte.apk --experimental -o youtube_music_patched.apk -i custom-branding-name -i custom-branding-music-afn-blue --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2 -e custom-branding-music-red -i custom-branding-music-revancify"
+        elif [ "$icon" == "4" ]; then
+         # If the icon is "og", change custom-branding-any to "og"
+         command="java -jar revanced-cli.jar -a YouTube_Music.apk -c -b revanced-patches.jar -m inte.apk --experimental --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -o youtube_music_patched.apk -i custom-branding-name -e custom-branding-music-revancify -e custom-branding-music-afn-blue -e custom-branding-music-afn-red --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2"
        else
            # If the icon is something else, print an error message and set the icon variable to an empty string
            echo "Invalid icon color. Please try again."
@@ -731,7 +735,7 @@ elif [ "$var" -eq 2 ]; then
    chcon u:object_r:apk_data_file:s0 "$revancedapp" &&\
    mount -o bind "$revancedapp" "$stockapp" &&\
    am force-stop com.google.android.youtube' 2>&1 .mountlog
-   echo revanced extended should me mounted by now
+   echo "revanced extended should me mounted by now"
    fi
    done
    
@@ -809,7 +813,7 @@ elif [ "$var" -eq 2 ]; then
    chcon u:object_r:apk_data_file:s0 "$revancedapp" &&\
    mount -o bind "$revancedapp" "$stockapp" &&\
    am force-stop com.google.android.youtube' 2>&1 .mountlog
-   echo revanced extended should be mounted by now
+   echo "revanced extended should be mounted by now"
     else
      # If the user enters an invalid option, print an error message and exit the script
      echo "Invalid option. Exiting script."
@@ -890,7 +894,7 @@ elif [ "$var" -eq 2 ]; then
      chcon u:object_r:apk_data_file:s0 "$revancedapp" &&\
      mount -o bind "$revancedapp" "$stockapp" &&\
      am force-stop com.google.android.youtube' 2>&1 .mountlog
-     echo revanced extended should be mounted by now
+     echo "revanced extended should be mounted by now"
      else
      # If the user enters an invalid option, print an error message and exit the script
      echo "Invalid option. Exiting script."
@@ -973,7 +977,7 @@ elif [ "$var" -eq 2 ]; then
        chcon u:object_r:apk_data_file:s0 "$revancedapp" &&\
        mount -o bind "$revancedapp" "$stockapp" &&\
        am force-stop com.google.android.youtube' 2>&1 .mountlog
-       echo revanced should be mounted by now
+       echo "revanced should be mounted by now"
      else
      # If the user enters an invalid option, print an error message and exit the script
      echo "Invalid option. Exiting script."
@@ -1053,13 +1057,16 @@ elif [ "$var" -eq 2 ]; then
        # If the icon is not blank, modify the command string based on the value of the icon variable
        if [ "$icon" == "1" ]; then
          # If the icon is "red", change custom-branding-any to "red"
-         command="java -jar revanced-cli.jar -a YouTube_Music.apk -c -b revanced-patches.jar --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2 --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -m inte.apk --experimental -o youtube_music_patched.apk -i custom-branding-name -i custom-branding-icon-music-red "
+         command="java -jar revanced-cli.jar -a YouTube_Music.apk -c -b revanced-patches.jar --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2 --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -m inte.apk --experimental -o youtube_music_patched.apk -i custom-branding-name -i custom-branding-music-afn-red -e custom-branding-music-revancify -e custom-branding-music-afn-blue"
        elif [ "$icon" == "2" ]; then
          # If the icon is "revancify", change custom-branding-any to "revancify"
-         command="java -jar revanced-cli.jar --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -a YouTube_Music.apk -c -b revanced-patches.jar -m inte.apk --experimental -o youtube_music_patched.apk -i custom-branding-name -i custom-branding-icon-revancify --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2 -e custom-branding-icon-music-red"
+         command="java -jar revanced-cli.jar --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -a YouTube_Music.apk -c -b revanced-patches.jar -m inte.apk --experimental -o youtube_music_patched.apk -i custom-branding-name -i custom-branding-music-afn-blue --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2 -e custom-branding-music-red -e custom-branding-music-revancify"
         elif [ "$icon" == "3" ]; then
-         # If the icon is "revancify", change custom-branding-any to "og"
-         command="java -jar revanced-cli.jar -a YouTube_Music.apk -c -b revanced-patches.jar -m inte.apk --experimental --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -o youtube_music_patched.apk -i custom-branding-name -e custom-branding-icon-revancify -e custom-branding-icon-afn-blue -e custom-branding-icon-afn-red --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2"
+         # If the icon is "revancify", change custom-branding-any to "revancify"
+         command="java -jar revanced-cli.jar --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -a YouTube_Music.apk -c -b revanced-patches.jar -m inte.apk --experimental -o youtube_music_patched.apk -i custom-branding-name -i custom-branding-music-afn-blue --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2 -e custom-branding-music-red -i custom-branding-music-revancify"
+        elif [ "$icon" == "4" ]; then
+         # If the icon is "og", change custom-branding-any to "og"
+         command="java -jar revanced-cli.jar -a YouTube_Music.apk -c -b revanced-patches.jar -m inte.apk --experimental --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -o youtube_music_patched.apk -i custom-branding-name -e custom-branding-music-revancify -e custom-branding-music-afn-blue -e custom-branding-music-afn-red --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2"
        else
            # If the icon is something else, print an error message and set the icon variable to an empty string
            echo "Invalid icon color. Please try again."
@@ -1079,7 +1086,7 @@ elif [ "$var" -eq 2 ]; then
    chcon u:object_r:apk_data_file:s0 "$revancedapp" &&\
    mount -o bind "$revancedapp" "$stockapp" &&\
    am force-stop com.google.android.apps.youtube.music' 2>&1 .mountlog
-   echo revanced extended should be mounted by now
+   echo "revanced extended should be mounted by now"
    fi
   done
 exit 0
