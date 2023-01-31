@@ -566,6 +566,7 @@ if [ "$var" -eq 1 ]; then
   fi
 exit 0
 elif [ "$var" -eq 2 ]; then
+   su -c mkdir /data/local/tmp/revanced.delete
    WGET_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
 
    #download youtube
@@ -576,30 +577,6 @@ elif [ "$var" -eq 2 ]; then
   get_latestytversion() {
       YTVERSION=$(su -c dumpsys package com.google.android.youtube | grep versionName | cut -d '=' -f 2 | sed -n '1p')
       echo "Installed Youtube Version: $YTVERSION"
- }
-
-   dl_yt() {
-      rm -rf "$2"
-      echo "Downloading YouTube $1"
-      url="https://www.apkmirror.com/apk/google-inc/youtube/youtube-${1//./-}-release/"
-      url="$url$(req "$url" - | grep Variant -A50 | grep ">APK<" -A2 | grep android-apk-download | sed "s#.*-release/##g;s#/\#.*##g")"
-      url="https://www.apkmirror.com$(req "$url" - | tr '\n' ' ' | sed -n 's;.*href="\(.*key=[^"]*\)">.*;\1;p')"
-      url="https://www.apkmirror.com$(req "$url" - | tr '\n' ' ' | sed -n 's;.*href="\(.*key=[^"]*\)">.*;\1;p')"
-      req "$url" "$2"
-  }
-  elif [ "$ytver" -eq 2 ]; then
-
-   WGET_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
-
-   #download youtube
-    req() {
-      wget -O "$2" --header="$WGET_HEADER" "$1"
-    }
-
-   get_latestytversion() {
-      curl -L "$PATCH_JSON" -o patches.json 
-     YTVERSION=$(jq -r '.[] | select(.compatiblePackages[].name == "com.google.android.youtube") | .compatiblePackages[].versions | .[]' patches.json | sort -n | tail -1)
-      echo "Latest Youtube Version: $YTVERSION"
  }
 
    dl_yt() {
@@ -725,8 +702,9 @@ elif [ "$var" -eq 2 ]; then
    # Execute the modified command
    $command
    mkdir /sdcard/"revanced extended apks" && mv  youtube_patched.apk /sdcard/"revanced extended apks"    
-   su -mm -c 'grep com.google.android.youtube /proc/mounts  | cut -d " " -f 2 | sed "s/apk.*/apk/" | xargs -r umount -l > /dev/null 2>&1; &&\
-   cp /data/data/com.termux/files/home/storage/"revanced extended apks" "youtube_patched".apk /data/local/tmp/revanced.delete &&\
+   su -mm -c 'grep com.google.android.youtube /proc/mounts  | cut -d " " -f 2 | sed "s/apk.*/apk/" | xargs -r umount -l &&\
+   cp /sdcard/"revanced extended apks"/"youtube_patched".apk /data/local/tmp/revanced.delete &&\
+   rm -r -f /data/adb/revanced/com.google.android.youtube.apk &&\
    mv /data/local/tmp/revanced.delete /data/adb/revanced/"com.google.android.youtube".apk &&\
    stockapp=$(pm path com.google.android.youtube | grep base | sed "s/package://g") &&\
    revancedapp=/data/adb/revanced/"com.google.android.youtube".apk &&\
@@ -734,7 +712,7 @@ elif [ "$var" -eq 2 ]; then
    chown system:system "$revancedapp" &&\
    chcon u:object_r:apk_data_file:s0 "$revancedapp" &&\
    mount -o bind "$revancedapp" "$stockapp" &&\
-   am force-stop com.google.android.youtube' 2>&1 .mountlog
+   am force-stop com.google.android.youtube' 
    clear
    echo "revanced extended should be mounted by now"
    echo "to uninstall (unmount), please run ./uninstall.sh into termux"
@@ -805,8 +783,9 @@ elif [ "$var" -eq 2 ]; then
    # Execute the modified command
    $command
    mkdir /sdcard/"revanced extended apks" && mv  youtube_patched.apk /sdcard/"revanced extended apks"    
-   su -mm -c 'grep com.google.android.youtube /proc/mounts  | cut -d " " -f 2 | sed "s/apk.*/apk/" | xargs -r umount -l > /dev/null 2>&1; &&\
-   cp /data/data/com.termux/files/home/storage/"revanced extended apks" "youtube_patched".apk /data/local/tmp/revanced.delete &&\
+   su -mm -c 'grep com.google.android.youtube /proc/mounts  | cut -d " " -f 2 | sed "s/apk.*/apk/" | xargs -r umount -l &&\
+   cp /sdcard/"revanced extended apks"/"youtube_patched".apk /data/local/tmp/revanced.delete &&\
+   rm -r -f /data/adb/revanced/com.google.android.youtube.apk &&\
    mv /data/local/tmp/revanced.delete /data/adb/revanced/"com.google.android.youtube".apk &&\
    stockapp=$(pm path com.google.android.youtube | grep base | sed "s/package://g") &&\
    revancedapp=/data/adb/revanced/"com.google.android.youtube".apk &&\
@@ -814,7 +793,7 @@ elif [ "$var" -eq 2 ]; then
    chown system:system "$revancedapp" &&\
    chcon u:object_r:apk_data_file:s0 "$revancedapp" &&\
    mount -o bind "$revancedapp" "$stockapp" &&\
-   am force-stop com.google.android.youtube' 2>&1 .mountlog
+   am force-stop com.google.android.youtube' 
    clear
    echo "revanced extended should be mounted by now"
    echo "to uninstall (unmount), please run ./uninstall.sh into termux"
@@ -888,8 +867,9 @@ elif [ "$var" -eq 2 ]; then
     # Execute the modified command
     $command
     mkdir /sdcard/"revanced extended apks" && mv  youtube_patched.apk /sdcard/"revanced extended apks"    
-     su -mm -c 'grep com.google.android.youtube /proc/mounts  | cut -d " " -f 2 | sed "s/apk.*/apk/" | xargs -r umount -l > /dev/null 2>&1; &&\
-    cp /data/data/com.termux/files/home/storage/"revanced extended apks" "youtube_patched".apk /data/local/tmp/revanced.delete &&\
+     su -mm -c 'grep com.google.android.youtube /proc/mounts  | cut -d " " -f 2 | sed "s/apk.*/apk/" | xargs -r umount -l &&\
+     cp /sdcard/"revanced extended apks"/"youtube_patched".apk /data/local/tmp/revanced.delete &&\
+     rm -r -f /data/adb/revanced/com.google.android.youtube.apk &&\
      mv /data/local/tmp/revanced.delete /data/adb/revanced/"com.google.android.youtube".apk &&\
      stockapp=$(pm path com.google.android.youtube | grep base | sed "s/package://g") &&\
      revancedapp=/data/adb/revanced/"com.google.android.youtube".apk &&\
@@ -897,7 +877,7 @@ elif [ "$var" -eq 2 ]; then
      chown system:system "$revancedapp" &&\
      chcon u:object_r:apk_data_file:s0 "$revancedapp" &&\
      mount -o bind "$revancedapp" "$stockapp" &&\
-     am force-stop com.google.android.youtube' 2>&1 .mountlog
+     am force-stop com.google.android.youtube' 
      clear
      echo "revanced extended should be mounted by now"
      echo "to uninstall (unmount), please run ./uninstall.sh into termux"
@@ -972,9 +952,10 @@ elif [ "$var" -eq 2 ]; then
      fi
     # Execute the modified command
     $command
-       mkdir /sdcard/"revanced extended apks" && mv  youtube_patched.apk /sdcard/"revanced extended apks"    
-       su -mm -c 'grep com.google.android.youtube /proc/mounts  | cut -d " " -f 2 | sed "s/apk.*/apk/" | xargs -r umount -l > /dev/null 2>&1; &&\
-       cp /data/data/com.termux/files/home/storage/"revanced extended apks" "youtube_patched".apk /data/local/tmp/revanced.delete &&\
+       mkdir /sdcard/"revanced extended apks" && mv  youtube_patched.apk /sdcard/"revanced extended apks"
+       su -mm -c 'grep com.google.android.youtube /proc/mounts  | cut -d " " -f 2 | sed "s/apk.*/apk/" | xargs -r umount -l &&\
+       cp /sdcard/"revanced extended apks"/"youtube_patched".apk /data/local/tmp/revanced.delete &&\
+       rm -r -f /data/adb/revanced/com.google.android.youtube.apk &&\
        mv /data/local/tmp/revanced.delete /data/adb/revanced/"com.google.android.youtube".apk &&\
        stockapp=$(pm path com.google.android.youtube | grep base | sed "s/package://g") &&\
        revancedapp=/data/adb/revanced/"com.google.android.youtube".apk &&\
@@ -982,7 +963,7 @@ elif [ "$var" -eq 2 ]; then
        chown system:system "$revancedapp" &&\
        chcon u:object_r:apk_data_file:s0 "$revancedapp" &&\
        mount -o bind "$revancedapp" "$stockapp" &&\
-       am force-stop com.google.android.youtube' 2>&1 .mountlog
+       am force-stop com.google.android.youtube' 
        clear
        echo "revanced extended should be mounted by now"
        echo "to uninstall (unmount), please run ./uninstall.sh into termux"
@@ -1084,8 +1065,9 @@ elif [ "$var" -eq 2 ]; then
    # Execute the modified command
    $command
    mkdir /sdcard/"revanced extended apks" && mv  youtube_music_patched.apk /sdcard/"revanced extended apks"    
-   su -mm -c 'grep com.google.android.apps.youtube.music /proc/mounts  | cut -d " " -f 2 | sed "s/apk.*/apk/" | xargs -r umount -l > /dev/null 2>&1; done &&\
-   cp /data/data/com.termux/files/home/storage/"revanced extended apks" "youtube_music_patched".apk /data/local/tmp/revanced.delete &&\
+   su -mm -c 'grep com.google.android.apps.youtube.music /proc/mounts  | cut -d " " -f 2 | sed "s/apk.*/apk/" | xargs -r umount -l &&\
+   cp /sdcard/"revanced extended apks"/"youtube_music_patched".apk /data/local/tmp/revanced.delete &&\
+   rm -r -f /data/adb/revanced/com.google.android.apps.youtube.music.apk &&\
    mv /data/local/tmp/revanced.delete /data/adb/revanced/"com.google.android.apps.youtube.music".apk &&\
    stockapp=$(pm path com.google.android.apps.youtube.music | grep base | sed "s/package://g") &&\
    revancedapp=/data/adb/revanced/"com.google.android.apps.youtube.music".apk &&\
@@ -1093,7 +1075,7 @@ elif [ "$var" -eq 2 ]; then
    chown system:system "$revancedapp" &&\
    chcon u:object_r:apk_data_file:s0 "$revancedapp" &&\
    mount -o bind "$revancedapp" "$stockapp" &&\
-   am force-stop com.google.android.apps.youtube.music' 2>&1 .mountlog
+   am force-stop com.google.android.apps.youtube.music' 
    clear
    echo "revanced extended should be mounted by now"
    echo "to uninstall (unmount), please run ./uninstall.sh into termux"
