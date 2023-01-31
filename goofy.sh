@@ -705,7 +705,7 @@ elif [ "$var" -eq 2 ]; then
    su -mm -c 'grep com.google.android.youtube /proc/mounts  | cut -d " " -f 2 | sed "s/apk.*/apk/" | xargs -r umount -l &&\
    cp /sdcard/"revanced extended apks"/"youtube_patched".apk /data/local/tmp/revanced.delete &&\
    rm -r -f /data/adb/revanced/com.google.android.youtube.apk &&\
-   mv /data/local/tmp/revanced.delete /data/adb/revanced/"com.google.android.youtube".apk &&\
+   mv /data/local/tmp/revanced.delete /data/adb/revanced/com.google.android.youtube.apk &&\
    stockapp=$(pm path com.google.android.youtube | grep base | sed "s/package://g") &&\
    revancedapp=/data/adb/revanced/"com.google.android.youtube".apk &&\
    chmod 644 "$revancedapp" &&\
@@ -786,7 +786,7 @@ elif [ "$var" -eq 2 ]; then
    su -mm -c 'grep com.google.android.youtube /proc/mounts  | cut -d " " -f 2 | sed "s/apk.*/apk/" | xargs -r umount -l &&\
    cp /sdcard/"revanced extended apks"/"youtube_patched".apk /data/local/tmp/revanced.delete &&\
    rm -r -f /data/adb/revanced/com.google.android.youtube.apk &&\
-   mv /data/local/tmp/revanced.delete /data/adb/revanced/"com.google.android.youtube".apk &&\
+   mv /data/local/tmp/revanced.delete /data/adb/revanced/com.google.android.youtube.apk &&\
    stockapp=$(pm path com.google.android.youtube | grep base | sed "s/package://g") &&\
    revancedapp=/data/adb/revanced/"com.google.android.youtube".apk &&\
    chmod 644 "$revancedapp" &&\
@@ -870,7 +870,7 @@ elif [ "$var" -eq 2 ]; then
      su -mm -c 'grep com.google.android.youtube /proc/mounts  | cut -d " " -f 2 | sed "s/apk.*/apk/" | xargs -r umount -l &&\
      cp /sdcard/"revanced extended apks"/"youtube_patched".apk /data/local/tmp/revanced.delete &&\
      rm -r -f /data/adb/revanced/com.google.android.youtube.apk &&\
-     mv /data/local/tmp/revanced.delete /data/adb/revanced/"com.google.android.youtube".apk &&\
+     mv /data/local/tmp/revanced.delete /data/adb/revanced/com.google.android.youtube.apk &&\
      stockapp=$(pm path com.google.android.youtube | grep base | sed "s/package://g") &&\
      revancedapp=/data/adb/revanced/"com.google.android.youtube".apk &&\
      chmod 644 "$revancedapp" &&\
@@ -956,7 +956,7 @@ elif [ "$var" -eq 2 ]; then
        su -mm -c 'grep com.google.android.youtube /proc/mounts  | cut -d " " -f 2 | sed "s/apk.*/apk/" | xargs -r umount -l &&\
        cp /sdcard/"revanced extended apks"/"youtube_patched".apk /data/local/tmp/revanced.delete &&\
        rm -r -f /data/adb/revanced/com.google.android.youtube.apk &&\
-       mv /data/local/tmp/revanced.delete /data/adb/revanced/"com.google.android.youtube".apk &&\
+       mv /data/local/tmp/revanced.delete /data/adb/revanced/com.google.android.youtube.apk &&\
        stockapp=$(pm path com.google.android.youtube | grep base | sed "s/package://g") &&\
        revancedapp=/data/adb/revanced/"com.google.android.youtube".apk &&\
        chmod 644 "$revancedapp" &&\
