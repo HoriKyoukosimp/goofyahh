@@ -706,16 +706,16 @@ elif [ "$var" -eq 2 ]; then
        # If the icon is not blank, modify the command string based on the value of the icon variable
        if [ "$icon" == "1" ]; then
          # If the icon is "red", change custom-branding-any to "red"
-         command="$patchiconred -e theme -e materialyou"
+         command="$patchiconred -e theme -e materialyou -e microg-support"
        elif [ "$icon" == "2" ]; then
          # If the icon is "blue", change custom-branding-any to "blue"
-         command="$patchiconblue -e theme -e materialyou"
+         command="$patchiconblue -e theme -e materialyou -e microg-support"
        elif [ "$icon" == "3" ]; then
          # If the icon is "revancify", change custom-branding-any to "revancify"
-         command="$patchiconrevancify -e theme -e materialyou"
+         command="$patchiconrevancify -e theme -e materialyou -e microg-support"
         elif [ "$icon" == "4" ]; then
          # If the icon is "revancify", change custom-branding-any to "og"
-         command="$patchiconog -e theme -e materialyou"
+         command="$patchiconog -e theme -e materialyou -e microg-support"
        else
            # If the icon is something else, print an error message and set the icon variable to an empty string
            echo "Invalid icon color. Please try again."
@@ -787,16 +787,16 @@ elif [ "$var" -eq 2 ]; then
        # If the icon is not blank, modify the command string based on the value of the icon variable
        if [ "$icon" == "1" ]; then
          # If the icon is "red", change custom-branding-any to "red"
-         command="$patchiconred -e theme -i materialyou"
+         command="$patchiconred -e theme -i materialyou -e microg-support"
        elif [ "$icon" == "2" ]; then
          # If the icon is "blue", change custom-branding-any to "blue"
-         command="$patchiconblue -e theme -i materialyou"
+         command="$patchiconblue -e theme -i materialyou -e microg-support"
        elif [ "$icon" == "3" ]; then
          # If the icon is "revancify", change custom-branding-any to "revancify"
-         command="$patchiconrevancify -e theme -i materialyou"
+         command="$patchiconrevancify -e theme -i materialyou -e microg-support"
         elif [ "$icon" == "4" ]; then
          # If the icon is "revancify", change custom-branding-any to "og"
-         command="$patchiconog -e theme -i materialyou"   
+         command="$patchiconog -e theme -i materialyou -e microg-support"   
         else
          # If the icon is something else, print an error message and set the icon variable to an empty string
          echo "Invalid icon color. Please try again."
@@ -870,16 +870,16 @@ elif [ "$var" -eq 2 ]; then
        # If the icon is not blank, modify the command string based on the value of the icon variable
              if [ "$icon" == "1" ]; then
          # If the icon is "red", change custom-branding-any to "red"
-         command="$patchiconred -i theme -e materialyou"
+         command="$patchiconred -i theme -e materialyou -e microg-support"
        elif [ "$icon" == "2" ]; then
          # If the icon is "blue", change custom-branding-any to "blue"
-         command="$patchiconblue -i theme -e materialyou"
+         command="$patchiconblue -i theme -e materialyou -e microg-support"
        elif [ "$icon" == "3" ]; then
          # If the icon is "revancify", change custom-branding-any to "revancify"
-         command="$patchiconrevancify -i theme -e materialyou"
+         command="$patchiconrevancify -i theme -e materialyou -e microg-support"
         elif [ "$icon" == "4" ]; then
          # If the icon is "revancify", change custom-branding-any to "og"
-         command="$patchiconog -i theme -e materialyou"
+         command="$patchiconog -i theme -e materialyou -e microg-support"
         else
          # If the icon is something else, print an error message and set the icon variable to an empty string
          echo "Invalid icon color. Please try again."
@@ -955,16 +955,16 @@ elif [ "$var" -eq 2 ]; then
        # If the icon is not blank, modify the command string based on the value of the icon variable
        if [ "$icon" == "1" ]; then
          # If the icon is "red", change custom-branding-any to "red"
-         command="$patchiconred -i theme -i materialyou"
+         command="$patchiconred -i theme -i materialyou -e microg-support"
        elif [ "$icon" == "2" ]; then
          # If the icon is "blue", change custom-branding-any to "blue"
-         command="$patchiconblue -i theme -i materialyou"
+         command="$patchiconblue -i theme -i materialyou -e microg-support"
        elif [ "$icon" == "3" ]; then
          # If the icon is "revancify", change custom-branding-any to "revancify"
-         command="$patchiconrevancify -i theme -i materialyou"
+         command="$patchiconrevancify -i theme -i materialyou -e microg-support"
         elif [ "$icon" == "4" ]; then
          # If the icon is "revancify", change custom-branding-any to "og"
-         command="$patchiconog -i theme -i materialyou"
+         command="$patchiconog -i theme -i materialyou -e microg-support"
        else
          # If the icon is something else, print an error message and set the icon variable to an empty string
          echo "Invalid icon color. Please try again."
@@ -1065,16 +1065,16 @@ elif [ "$var" -eq 2 ]; then
        # If the icon is not blank, modify the command string based on the value of the icon variable
        if [ "$icon" == "1" ]; then
          # If the icon is "red", change custom-branding-any to "red"
-         command="java -jar revanced-cli.jar -a YouTube_Music.apk -c -b revanced-patches.jar --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2 --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -m inte.apk --experimental -o youtube_music_patched.apk -i custom-branding-name -i custom-branding-music-afn-red -e custom-branding-music-revancify -e custom-branding-music-afn-blue"
+         command="java -jar revanced-cli.jar -a YouTube_Music.apk -c -b revanced-patches.jar --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2 --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -m inte.apk --experimental -o youtube_music_patched.apk -i custom-branding-name -i custom-branding-music-afn-red -e custom-branding-music-revancify -e custom-branding-music-afn-blue -e microg-support"
        elif [ "$icon" == "2" ]; then
          # If the icon is "revancify", change custom-branding-any to "revancify"
-         command="java -jar revanced-cli.jar --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -a YouTube_Music.apk -c -b revanced-patches.jar -m inte.apk --experimental -o youtube_music_patched.apk -i custom-branding-name -i custom-branding-music-afn-blue --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2 -e custom-branding-music-red -e custom-branding-music-revancify"
+         command="java -jar revanced-cli.jar --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -a YouTube_Music.apk -c -b revanced-patches.jar -m inte.apk --experimental -o youtube_music_patched.apk -i custom-branding-name -i custom-branding-music-afn-blue --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2 -e custom-branding-music-red -e custom-branding-music-revancify -e microg-support"
         elif [ "$icon" == "3" ]; then
          # If the icon is "revancify", change custom-branding-any to "revancify"
-         command="java -jar revanced-cli.jar --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -a YouTube_Music.apk -c -b revanced-patches.jar -m inte.apk --experimental -o youtube_music_patched.apk -i custom-branding-name -i custom-branding-music-afn-blue --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2 -e custom-branding-music-red -i custom-branding-music-revancify"
+         command="java -jar revanced-cli.jar --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -a YouTube_Music.apk -c -b revanced-patches.jar -m inte.apk --experimental -o youtube_music_patched.apk -i custom-branding-name -i custom-branding-music-afn-blue --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2 -e custom-branding-music-red -i custom-branding-music-revancify -e microg-support"
         elif [ "$icon" == "4" ]; then
          # If the icon is "og", change custom-branding-any to "og"
-         command="java -jar revanced-cli.jar -a YouTube_Music.apk -c -b revanced-patches.jar -m inte.apk --experimental --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -o youtube_music_patched.apk -i custom-branding-name -e custom-branding-music-revancify -e custom-branding-music-afn-blue -e custom-branding-music-afn-red --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2"
+         command="java -jar revanced-cli.jar -a YouTube_Music.apk -c -b revanced-patches.jar -m inte.apk --experimental --keystore /data/data/com.termux/files/home/.keystore/revanced.keystore -o youtube_music_patched.apk -i custom-branding-name -e custom-branding-music-revancify -e custom-branding-music-afn-blue -e custom-branding-music-afn-red --custom-aapt2-binary=/data/data/com.termux/files/home/rvxtemp/aapt2 -e microg-support"
        else
            # If the icon is something else, print an error message and set the icon variable to an empty string
            echo "Invalid icon color. Please try again."
