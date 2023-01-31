@@ -735,7 +735,9 @@ elif [ "$var" -eq 2 ]; then
    chcon u:object_r:apk_data_file:s0 "$revancedapp" &&\
    mount -o bind "$revancedapp" "$stockapp" &&\
    am force-stop com.google.android.youtube' 2>&1 .mountlog
-   echo "revanced extended should me mounted by now"
+   clear
+   echo "revanced extended should be mounted by now"
+   echo "to uninstall (unmount), please run ./uninstall.sh into termux
    fi
    done
    
@@ -813,7 +815,9 @@ elif [ "$var" -eq 2 ]; then
    chcon u:object_r:apk_data_file:s0 "$revancedapp" &&\
    mount -o bind "$revancedapp" "$stockapp" &&\
    am force-stop com.google.android.youtube' 2>&1 .mountlog
+   clear
    echo "revanced extended should be mounted by now"
+   echo "to uninstall (unmount), please run ./uninstall.sh into termux
     else
      # If the user enters an invalid option, print an error message and exit the script
      echo "Invalid option. Exiting script."
@@ -894,7 +898,9 @@ elif [ "$var" -eq 2 ]; then
      chcon u:object_r:apk_data_file:s0 "$revancedapp" &&\
      mount -o bind "$revancedapp" "$stockapp" &&\
      am force-stop com.google.android.youtube' 2>&1 .mountlog
+     clear
      echo "revanced extended should be mounted by now"
+     echo "to uninstall (unmount), please run ./uninstall.sh into termux
      else
      # If the user enters an invalid option, print an error message and exit the script
      echo "Invalid option. Exiting script."
@@ -977,7 +983,9 @@ elif [ "$var" -eq 2 ]; then
        chcon u:object_r:apk_data_file:s0 "$revancedapp" &&\
        mount -o bind "$revancedapp" "$stockapp" &&\
        am force-stop com.google.android.youtube' 2>&1 .mountlog
-       echo "revanced should be mounted by now"
+       clear
+       echo "revanced extended should be mounted by now"
+       echo "to uninstall (unmount), please run ./uninstall.sh into termux
      else
      # If the user enters an invalid option, print an error message and exit the script
      echo "Invalid option. Exiting script."
@@ -1086,7 +1094,9 @@ elif [ "$var" -eq 2 ]; then
    chcon u:object_r:apk_data_file:s0 "$revancedapp" &&\
    mount -o bind "$revancedapp" "$stockapp" &&\
    am force-stop com.google.android.apps.youtube.music' 2>&1 .mountlog
+   clear
    echo "revanced extended should be mounted by now"
+   echo "to uninstall (unmount), please run ./uninstall.sh into termux"
    fi
   done
 exit 0
