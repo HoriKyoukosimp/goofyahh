@@ -725,7 +725,7 @@ elif [ "$var" -eq 2 ]; then
    # Execute the modified command
    $command
    mkdir /sdcard/"revanced extended apks" && mv  youtube_patched.apk /sdcard/"revanced extended apks"    
-   su -mm -c 'grep com.google.android.youtube /proc/mounts  | cut -d " " -f 2 | sed "s/apk.*/apk/" | xargs -r umount -l > /dev/null 2>&1; done &&\
+   su -mm -c 'grep com.google.android.youtube /proc/mounts  | cut -d " " -f 2 | sed "s/apk.*/apk/" | xargs -r umount -l > /dev/null 2>&1; &&\
    cp /data/data/com.termux/files/home/storage/"revanced extended apks" "youtube_patched".apk /data/local/tmp/revanced.delete &&\
    mv /data/local/tmp/revanced.delete /data/adb/revanced/"com.google.android.youtube".apk &&\
    stockapp=$(pm path com.google.android.youtube | grep base | sed "s/package://g") &&\
@@ -805,7 +805,7 @@ elif [ "$var" -eq 2 ]; then
    # Execute the modified command
    $command
    mkdir /sdcard/"revanced extended apks" && mv  youtube_patched.apk /sdcard/"revanced extended apks"    
-   su -mm -c 'grep com.google.android.youtube /proc/mounts  | cut -d " " -f 2 | sed "s/apk.*/apk/" | xargs -r umount -l > /dev/null 2>&1; done &&\
+   su -mm -c 'grep com.google.android.youtube /proc/mounts  | cut -d " " -f 2 | sed "s/apk.*/apk/" | xargs -r umount -l > /dev/null 2>&1; &&\
    cp /data/data/com.termux/files/home/storage/"revanced extended apks" "youtube_patched".apk /data/local/tmp/revanced.delete &&\
    mv /data/local/tmp/revanced.delete /data/adb/revanced/"com.google.android.youtube".apk &&\
    stockapp=$(pm path com.google.android.youtube | grep base | sed "s/package://g") &&\
@@ -888,7 +888,7 @@ elif [ "$var" -eq 2 ]; then
     # Execute the modified command
     $command
     mkdir /sdcard/"revanced extended apks" && mv  youtube_patched.apk /sdcard/"revanced extended apks"    
-     su -mm -c 'grep com.google.android.youtube /proc/mounts  | cut -d " " -f 2 | sed "s/apk.*/apk/" | xargs -r umount -l > /dev/null 2>&1; done &&\
+     su -mm -c 'grep com.google.android.youtube /proc/mounts  | cut -d " " -f 2 | sed "s/apk.*/apk/" | xargs -r umount -l > /dev/null 2>&1; &&\
     cp /data/data/com.termux/files/home/storage/"revanced extended apks" "youtube_patched".apk /data/local/tmp/revanced.delete &&\
      mv /data/local/tmp/revanced.delete /data/adb/revanced/"com.google.android.youtube".apk &&\
      stockapp=$(pm path com.google.android.youtube | grep base | sed "s/package://g") &&\
@@ -973,7 +973,7 @@ elif [ "$var" -eq 2 ]; then
     # Execute the modified command
     $command
        mkdir /sdcard/"revanced extended apks" && mv  youtube_patched.apk /sdcard/"revanced extended apks"    
-       su -mm -c 'grep com.google.android.youtube /proc/mounts  | cut -d " " -f 2 | sed "s/apk.*/apk/" | xargs -r umount -l > /dev/null 2>&1; done &&\
+       su -mm -c 'grep com.google.android.youtube /proc/mounts  | cut -d " " -f 2 | sed "s/apk.*/apk/" | xargs -r umount -l > /dev/null 2>&1; &&\
        cp /data/data/com.termux/files/home/storage/"revanced extended apks" "youtube_patched".apk /data/local/tmp/revanced.delete &&\
        mv /data/local/tmp/revanced.delete /data/adb/revanced/"com.google.android.youtube".apk &&\
        stockapp=$(pm path com.google.android.youtube | grep base | sed "s/package://g") &&\
