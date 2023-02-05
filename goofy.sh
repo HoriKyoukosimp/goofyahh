@@ -1009,8 +1009,9 @@ elif [ "$var" -eq 2 ]; then
    clear
    echo "Select an icon color:"
    echo "1 is red"
-   echo "2 is revancify"
-   echo "3 is YouTube Original Icon"
+   echo "2 is blue"
+   echo "3 is revancify"
+   echo "4 is YouTube Original Icon"
    # Initialize the icon variable to an empty string
    icon=""
 
