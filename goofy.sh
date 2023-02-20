@@ -86,8 +86,8 @@ if [ "$var" -eq 1 ]; then
  clear
 
  # Use sed to update the options.json file
- sed -i "s/YouTube_AppName.*/YouTube_AppName = \"$app_name\"/" options.toml
- sed -i "s/YouTube_PackageName.*/YouTube_PackageName = \"$package_name\"/" options.toml
+ sed -i "s/YouTubeAppName.*/YouTubeAppName = \"$app_name\"/" options.toml
+ sed -i "s/YouTubePackageName.*/YouTubePackageName = \"$package_name\"/" options.toml
  
  echo "select youtube version"
  echo "1 is latest youtube version (beta included)"
@@ -464,7 +464,7 @@ if [ "$var" -eq 1 ]; then
   
 
   # Use sed to update the options.json file
-  sed -i "s/Music_PackageName.*/Music_PackageName = \"$package_name\"/" options.toml
+  sed -i "s/MusicPackageName.*/MusicPackageName = \"$package_name\"/" options.toml
   
   #download youtube music
    WGET_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
@@ -625,7 +625,7 @@ elif [ "$var" -eq 2 ]; then
   clear
 
   # Use sed to update the options.json file
-  sed -i "s/YouTube_AppName.*/YouTube_AppName = \"$app_name\"/" options.toml
+  sed -i "s/YouTubeAppName.*/YouTubeAppName = \"$app_name\"/" options.toml
  
   # Prompt the user to select a theme option
   clear
@@ -982,7 +982,7 @@ elif [ "$var" -eq 2 ]; then
   sleep 2
 
   # Use sed to update the options.json file
-  sed -i "s/Music_PackageName.*/Music_PackageName = \"$package_name\"/" options.toml
+  sed -i "s/MusicPackageName.*/MusicPackageName = \"$package_name\"/" options.toml
   #download youtube music
    WGET_HEADER="User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
 
