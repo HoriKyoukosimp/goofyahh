@@ -35,9 +35,9 @@ patchiconog="java -jar revanced-cli.jar -a YouTube.apk -c -b revanced-patches.ja
 # create options.toml
 touch options.toml
 echo '[patch-options]' >> options.toml
-echo 'YouTube_AppName = "ReVanced Extended"' >> options.toml
-echo 'YouTube_PackageName = "app.rvx.android.youtube"' >> options.toml
-echo 'Music_PackageName = "app.rvx.android.apps.youtube.music"' >> options.toml
+echo 'YouTubeAppName = "ReVanced Extended"' >> options.toml
+echo 'YouTubePackageName = "app.rvx.android.youtube"' >> options.toml
+echo 'MusicPackageName = "app.rvx.android.apps.youtube.music"' >> options.toml
 echo 'Custom_Speed_Arrays = "0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0, 2.25"' >> options.toml
 echo 'Overlay_Buttons_Icon = "new"' >> options.toml
 echo 'darkThemeBackgroundColor = "@android:color/black"' >> options.toml
